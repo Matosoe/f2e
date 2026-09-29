@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Documentação interativa do F2E: requisitos, arquitetura, blueprint e resultados de benchmarks.">
+<title>F2E · Documentação técnica</title>
+<link rel="stylesheet" href="site/site.css">
+<script id="benchmark-data" type="application/json">{"aws": [{"memory": 128, "smoke": 16.38, "worker": 3152, "seconds": 255.21, "throughput": 19592, "throttles": 1}, {"memory": 256, "smoke": 16.87, "worker": 6283, "seconds": 149.07, "throughput": 33541, "throttles": 0}, {"memory": 512, "smoke": 8.59, "worker": 12782, "seconds": 96.04, "throughput": 52062, "throttles": 0}, {"memory": 1024, "smoke": 8.51, "worker": 24517, "seconds": 66.76, "throughput": 74901, "throttles": 0}], "local": {"runId": "20260907T211528Z", "status": "COMPLETED", "jobId": "626fd8f810e14516cf36b0c2f9a8a0e023c82ed982c2b3626bbbcbb932d6d42c", "objectKey": "benchmark-text/20260907T211528Z-5000000x100.txt", "machine": {"cpu": "13th Gen Intel(R) Core(TM) i7-13700H", "physicalCores": 14, "logicalThreads": 20, "ramBytes": 33854128128, "dockerDesktop": {"cpus": 20, "ramBytes": 16519639040}}, "input": {"records": 5000000, "recordLengthBytes": 100, "sizeBytes": 500000000, "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"}, "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 100, "maxMessageBytes": 24000}, "durationsMs": {"generation": 58, "provision": 23201, "upload": 3785, "processing": 197790}, "result": {"expectedChunks": 100, "completedChunks": 100, "recordsRead": 5000000, "recordsPublished": 5000000, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 178539, "intakeDlq": 0, "chunkDlq": 0, "recordsPerSecond": 25279.34, "inputMiBPerSecond": 2.41}, "resources": {"peakSingleContainerCpuPercent": 166.3, "peakSingleContainerMemoryPercent": 33.78, "rawSamples": "docker-resources.csv"}}, "localMatrix": {"runId": "20260908T234320Z", "kind": "local-memory-cpu-matrix", "matrix": "128:0.07 256:0.14 512:0.29 1024:0.58", "cases": [{"stage": "smoke", "status": "COMPLETED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 128, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.07", "workerContainerMemory": "128m"}, "input": {"records": 10000, "recordLengthBytes": 100, "sizeBytes": 1000000, "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"}, "durationsMs": {"generation": 95, "provision": 28664, "upload": 919, "processing": 2555}, "result": {"expectedChunks": 1, "completedChunks": 1, "recordsRead": 10000, "recordsPublished": 10000, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 66, "intakeDlq": 0, "chunkDlq": 0, "recordsPerSecond": 3913.89, "inputMiBPerSecond": 0.37}, "resources": {"peakSingleContainerCpuPercent": 99.49, "peakSingleContainerMemoryPercent": 18.99, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}, {"stage": "full", "status": "FAILED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 128, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.07", "workerContainerMemory": "128m"}, "input": {"records": 5000000, "recordLengthBytes": 100, "sizeBytes": 500000000, "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"}, "durationsMs": {"generation": 66, "provision": 28661, "upload": 9118, "processing": 601316}, "result": {"expectedChunks": 95, "completedChunks": 5, "recordsRead": 263155, "recordsPublished": 263155, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 16252, "intakeDlq": 2, "chunkDlq": 0, "recordsPerSecond": 437.63, "inputMiBPerSecond": 0.79}, "resources": {"peakSingleContainerCpuPercent": 220.31, "peakSingleContainerMemoryPercent": 32.42, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}, {"stage": "smoke", "status": "COMPLETED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 256, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.14", "workerContainerMemory": "256m"}, "input": {"records": 10000, "recordLengthBytes": 100, "sizeBytes": 1000000, "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"}, "durationsMs": {"generation": 85, "provision": 44291, "upload": 1213, "processing": 2526}, "result": {"expectedChunks": 1, "completedChunks": 1, "recordsRead": 10000, "recordsPublished": 10000, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 66, "intakeDlq": 0, "chunkDlq": 0, "recordsPerSecond": 3958.83, "inputMiBPerSecond": 0.38}, "resources": {"peakSingleContainerCpuPercent": 84.48, "peakSingleContainerMemoryPercent": 19.67, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}, {"stage": "smoke", "status": "COMPLETED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 512, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.29", "workerContainerMemory": "512m"}, "input": {"records": 10000, "recordLengthBytes": 100, "sizeBytes": 1000000, "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"}, "durationsMs": {"generation": 84, "provision": 29670, "upload": 1411, "processing": 3014}, "result": {"expectedChunks": 1, "completedChunks": 1, "recordsRead": 10000, "recordsPublished": 10000, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 203, "intakeDlq": 0, "chunkDlq": 0, "recordsPerSecond": 3317.85, "inputMiBPerSecond": 0.32}, "resources": {"peakSingleContainerCpuPercent": 301.55, "peakSingleContainerMemoryPercent": 8, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}, {"stage": "full", "status": "FAILED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 512, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.29", "workerContainerMemory": "512m"}, "input": {"records": 5000000, "recordLengthBytes": 100, "sizeBytes": 500000000, "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"}, "durationsMs": {"generation": 81, "provision": 29470, "upload": 4666, "processing": 282661}, "result": {"expectedChunks": 95, "completedChunks": 5, "recordsRead": 263155, "recordsPublished": 263155, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 16155, "intakeDlq": 1, "chunkDlq": 0, "recordsPerSecond": 930.99, "inputMiBPerSecond": 1.69}, "resources": {"peakSingleContainerCpuPercent": 162.55, "peakSingleContainerMemoryPercent": 31.7, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}, {"stage": "smoke", "status": "COMPLETED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 1024, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.58", "workerContainerMemory": "1024m"}, "input": {"records": 10000, "recordLengthBytes": 100, "sizeBytes": 1000000, "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"}, "durationsMs": {"generation": 60, "provision": 27550, "upload": 861, "processing": 1800}, "result": {"expectedChunks": 1, "completedChunks": 1, "recordsRead": 10000, "recordsPublished": 10000, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 33, "intakeDlq": 0, "chunkDlq": 0, "recordsPerSecond": 5555.56, "inputMiBPerSecond": 0.53}, "resources": {"peakSingleContainerCpuPercent": 106.08, "peakSingleContainerMemoryPercent": 5.32, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}, {"stage": "full", "status": "FAILED", "parameters": {"recordsPerChunk": 50000, "publishConcurrency": 8, "outputMode": "bundle", "maxEnvelopesPerMessage": 0, "maxMessageBytes": 256000, "workerMemoryMB": 1024, "workerTimeoutSeconds": 600, "workerContainerCPUs": "0.58", "workerContainerMemory": "1024m"}, "input": {"records": 5000000, "recordLengthBytes": 100, "sizeBytes": 500000000, "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"}, "durationsMs": {"generation": 56, "provision": 23420, "upload": 4620, "processing": 194766}, "result": {"expectedChunks": 95, "completedChunks": 5, "recordsRead": 263155, "recordsPublished": 263155, "recordsRejected": 0, "recordsIgnored": 0, "outputMessages": 16155, "intakeDlq": 2, "chunkDlq": 0, "recordsPerSecond": 1351.13, "inputMiBPerSecond": 2.45}, "resources": {"peakSingleContainerCpuPercent": 177.92, "peakSingleContainerMemoryPercent": 31.78, "rawSamples": "docker-resources.csv", "workerContainerLimits": "worker-container-limits.csv"}}]}}</script>
+<script src="site/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<aside class="sidebar">
+<a class="brand" href="#inicio"><span class="brand-icon">f→e</span><span>F2E<small>FILE TO EVENTS</small></span></a>
+<p class="nav-label">EXPLORAR DOCUMENTAÇÃO</p>
+<nav aria-label="Navegação principal">
+<a href="#inicio" aria-current="page"><span>01</span> Visão geral</a>
+<a href="#requisitos"><span>02</span> Requisitos e restrições</a>
+<a href="#arquitetura"><span>03</span> Arquitetura</a>
+<a href="#blueprint"><span>04</span> Blueprint arquitetural</a>
+<a href="#benchmarks"><span>05</span> Benchmarks <i>4</i></a>
+</nav>
+<div class="sidebar-bottom"><span class="status-dot"></span> Prova de conceito<p>Go · AWS · Event-driven</p><a href="../README.md">Repositório / README ↗</a></div>
+</aside>
+<div class="workspace">
+<header class="topbar"><span>Engenharia <b>/</b> Base de conhecimento</span><div class="search-box"><span aria-hidden="true">⌕</span><label class="sr-only" for="search">Buscar em toda a documentação</label><input id="search" type="search" placeholder="Buscar na documentação…"><kbd>/</kbd></div></header>
+<main id="conteudo" tabindex="-1">
+<section id="search-results" hidden aria-labelledby="search-title"><p class="eyebrow">BUSCA GLOBAL</p><h1 id="search-title">Resultados na documentação</h1><p id="search-count" role="status"></p><div id="search-list"></div></section>
+<section id="inicio" class="page">
+<div class="hero"><div><p class="eyebrow"><span class="status-dot"></span> DOCUMENTAÇÃO TÉCNICA / F2E</p><h1>De arquivos a eventos.<br><span>Do desenho à evidência.</span></h1><p class="lead">Explore os contratos, as decisões de arquitetura e as medições do File-to-Events — o fluxo de ingestão que conecta arquivos no S3 a consumidores no SQS.</p><div class="hero-actions"><a class="button primary" href="#arquitetura">Explorar arquitetura <span>↗</span></a><a class="button" href="#benchmarks">Ver benchmarks <span>→</span></a></div></div><div class="hero-art" aria-hidden="true"><div class="art-caption">FILE → CHUNKS → EVENTS</div><div class="file-glyph">≡<small>arquivo S3</small></div><div class="art-lines">↘<br>→<br>↗</div><div class="event-stack"><span>01 <b>evento</b> ↗</span><span>02 <b>evento</b> ↗</span><span>03 <b>evento</b> ↗</span></div><div class="art-footer"><span class="status-dot"></span> Processamento em paralelo</div></div></div>
+<div class="stats"><div><span>VOLUME VALIDADO NA MATRIZ AWS</span><strong>5 milhões</strong><small>de registros por perfil</small></div><div><span>MENOR TEMPO OBSERVADO</span><strong>66,76 <em>s</em></strong><small>AWS · bundle · 1.024 MiB</small></div><div><span>MODELOS DE ENTRADA</span><strong>3 formatos</strong><small>text · json · multi-line</small></div></div>
+<div class="section-heading"><div><p class="eyebrow">MAPA DA DOCUMENTAÇÃO</p><h2>Entenda. Explore. Valide.</h2></div><span>Quatro perspectivas do mesmo sistema</span></div>
+<div class="topic-grid">
+<a class="topic" href="#requisitos"><span class="topic-number">01 / CONTRATO</span><h3>Requisitos e restrições <span>↗</span></h3><p>Escopo, elegibilidade de arquivos, limites de entrega e critérios de adoção.</p><small>O que o F2E garante →</small></a>
+<a class="topic" href="#arquitetura"><span class="topic-number">02 / TOPOLOGIA</span><h3>Arquitetura <span>↗</span></h3><p>Explore o caminho dos dados e as responsabilidades de cada componente.</p><small>Como os componentes se conectam →</small></a>
+<a class="topic" href="#blueprint"><span class="topic-number">03 / DECISÕES</span><h3>Blueprint arquitetural <span>↗</span></h3><p>Paralelismo, idempotência, outbox, recuperação e escolhas de implementação.</p><small>Por que o sistema funciona assim →</small></a>
+<a class="topic" href="#benchmarks"><span class="topic-number">04 / EVIDÊNCIAS</span><h3>Resultados dos benchmarks <span>↗</span></h3><p>Compare perfis AWS e consulte execuções locais e investigações anteriores.</p><small>O que foi efetivamente medido →</small></a>
+</div>
+<div class="note"><strong>Contexto de adoção</strong><p>O F2E é uma prova de conceito. A matriz AWS mede uma carga específica; capacidade, SLOs e operação devem ser validados para cada uso. A entrega é at-least-once e não há ordenação global.</p></div>
+<p class="muted provenance">Destaques: <a href="#aws-matriz">matriz AWS de 09/09/2026</a> · execução <code>20260909T123015Z</code>.</p>
+</section>
+<article id="requisitos" class="page document-page" hidden><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h1>Requisitos e restrições</h1><a class="source-link" href="requisitos_e_restricoes.md">Abrir Markdown original ↗</a></div><div class="document-content"><details class="doc-section" id="requisitos-sec-1" open><summary>1. Escopo</summary><div class="section-body">
+<p>O F2E resolve exclusivamente o fluxo inbound File-to-Event:</p>
+<pre><code>Arquivo recebido -&gt; eventos de registros em SQS</code></pre>
+<p>A entrada normal é um objeto no Amazon S3, versionado ou não. Uma integração também pode enviar uma requisição explícita para a fila de intake, desde que forneça o contrato necessário.</p>
+<p>O F2E não implementa o fluxo outbound Event-to-File:</p>
+<pre><code>Eventos -&gt; arquivo</code></pre>
+<p>Esse fluxo requer outro building block ou módulo, com contrato, persistência, agrupamento, ordenação e estratégia de entrega próprios. A implementação atual publica eventos em SQS; SNS não é um destino provisionado por este projeto.</p>
+</div></details>
+<details class="doc-section" id="requisitos-sec-2" open><summary>2. Requisitos funcionais</summary><div class="section-body">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Requisito</th><th scope="col">Critério de atendimento</th></tr></thead><tbody>
+<tr><td>Converter arquivo em eventos</td><td>Cada registro lógico elegível gera um Envelope v1. No modo <code>single</code>, ele ocupa uma mensagem SQS; no modo <code>bundle</code>, vários envelopes integram uma mensagem.</td></tr>
+<tr><td>Iniciar sob demanda</td><td>Um ObjectCreated do S3 ou uma requisição explícita entra na fila de intake e aciona o Organizer.</td></tr>
+<tr><td>Processar arquivos grandes em paralelo</td><td>O Organizer produz chunks e Workers processam-nos concorrentemente.</td></tr>
+<tr><td>Rastrear a execução</td><td>O ledger registra arquivo, job, chunks, contagens, falhas, configuração e estado terminal.</td></tr>
+<tr><td>Sinalizar término</td><td>Um evento de conclusão é publicado em fila separada para jobs concluídos, falhos ou rejeitados.</td></tr>
+<tr><td>Recuperar trabalho técnico</td><td>Checkpoints do ledger, retries SQS, DLQs, outbox e replay explícito permitem reconciliação.</td></tr>
+</tbody></table></div>
+<p>A janela de processamento é um requisito de adoção: ela deve ser definida pelo caso de uso e validada em teste de carga. A configuração de chunks, concorrência e recursos Lambda deve permitir que o prazo acordado seja atingido sem exceder os limites do ambiente.</p>
+</div></details>
+<details class="doc-section" id="requisitos-sec-3" open><summary>3. Condições de elegibilidade do arquivo</summary><div class="section-body">
+<p>O F2E só é adequado quando a fronteira de cada registro lógico pode ser determinada de forma previsível e limitada.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Formato</th><th scope="col">Regra suportada</th><th scope="col">Limite necessário para paralelizar</th></tr></thead><tbody>
+<tr><td>text</td><td>Uma linha terminada por CR, LF ou CRLF.</td><td>maxRecordLengthBytes para arquivos divididos.</td></tr>
+<tr><td>json</td><td>Um objeto identificado e delimitado pelo nome da primeira chave configurada.</td><td>firstFieldName, maxBytesPerElement e a regra de unicidade do nome como chave estrutural.</td></tr>
+<tr><td>multi-line</td><td>Linhas agrupadas por marcador de início e prefixes aceitos.</td><td>maxBytesPerRecord e regra de marcador.</td></tr>
+</tbody></table></div>
+<p>O arquivo deve respeitar os máximos configurados para tamanho total, chunk, registro e mensagem. O Organizer rejeita contratos ou arquivos fora desses limites; o Worker falha o chunk quando não consegue provar uma fronteira válida dentro do limite declarado.</p>
+<p>No modo <code>text</code> divisível, o Organizer planeja faixas nominais de bytes: por padrão, busca aproximadamente 100 chunks por arquivo, respeitando o mínimo de 5 MiB e <code>maxChunkBytes</code>; arquivos menores que 5 MiB formam um único chunk. <code>targetChunkBytes</code>, quando informado, ajusta o alvo entre 5 MiB e o menor valor de 100 MiB e <code>maxChunkBytes</code>. A fronteira real do registro é resolvida pelo Worker dentro de <code>maxRecordLengthBytes</code>.</p>
+<h3>Não elegíveis sem extensão específica</h3>
+<ul>
+<li>Arquivos com hierarquia arbitrária ou registros cuja fronteira só pode ser descoberta após leitura integral e sem limite máximo conhecido.</li>
+<li>Arquivos que exigem quebra cega em bytes dentro de grupos hierárquicos.</li>
+<li>Formatos removidos ou não implementados, como CSV, XML, fixed-width, JSONL, NDJSON e binário.</li>
+<li>Registros que excedem o limite serializado da mensagem de destino.</li>
+<li>Casos cuja janela de processamento não caiba na capacidade e no timeout das Lambdas configuradas.</li>
+</ul>
+<p>Nesses cenários, use outro processo de ingestão ou desenvolva um adaptador com semântica de parsing e recursos compatíveis. Não basta aumentar concorrência: sem fronteira previsível, dividir o arquivo pode corromper o registro lógico.</p>
+</div></details>
+<details class="doc-section" id="requisitos-sec-4" open><summary>4. Restrições arquiteturais</summary><div class="section-body">
+<h3>S3</h3>
+<ul>
+<li>O bucket pode ter versionamento habilitado ou não. Com versionamento, o Organizer fixa bucket, key e <code>VersionId</code> antes de planejar o job e a retenção das versões deve cobrir a janela de retry e replay.</li>
+<li>Sem versionamento (ou com versionamento suspenso e <code>VersionId</code> <code>null</code>), o Organizer registra <code>ETag</code> e tamanho na admissão e usa leituras condicionais por <code>ETag</code>. Se o objeto for sobrescrito ou removido, o job falha e exige nova ingestão; retry e replay do conteúdo original não são garantidos.</li>
+<li>Notificações S3 apenas iniciam o fluxo; não são confirmação de processamento completo.</li>
+</ul>
+<h3>SQS</h3>
+<ul>
+<li>Intake, chunks, eventos de saída e conclusão são filas SQS.</li>
+<li>As filas são Standard: a entrega é at-least-once e não há ordenação global.</li>
+<li>Corpo, atributos e overhead serializado devem caber no máximo de mensagem.</li>
+<li><code>batchSize</code> limita mensagens físicas por chamada <code>SendMessageBatch</code> (até 10), não a quantidade de envelopes quando a saída usa <code>bundle</code>.</li>
+<li>A redrive policy move mensagens que excedem as tentativas para DLQs.</li>
+<li>Consumidores downstream são responsáveis pela exclusão da mensagem, DLQ de saída e idempotência dos próprios efeitos.</li>
+</ul>
+<h3>Lambda</h3>
+<ul>
+<li>Organizer e Worker executam sob demanda.</li>
+<li>Tempo de execução, memória, armazenamento efêmero, concorrência e limites da conta restringem throughput e tamanho de trabalho por invocação.</li>
+<li>O Worker lê intervalos S3; ele não deve depender de carregar todo arquivo na memória para casos paralelizáveis.</li>
+<li>Dimensionamento precisa ser validado com arquivos representativos e SLOs definidos antes de produção.</li>
+</ul>
+<h3>DynamoDB e SSM</h3>
+<ul>
+<li>DynamoDB é o ledger técnico: não substitui a persistência de negócio dos consumidores.</li>
+<li>SSM guarda configuração por prefixo e limites globais.</li>
+<li>Para notificações S3, o prefixo mais específico seleciona a configuração SSM, registrada no snapshot do job; alterar SSM afeta somente novas admissões. Requisições explícitas usam o contrato recebido e os padrões da Lambda, sem seleção de prefixo no SSM.</li>
+</ul>
+</div></details>
+<details class="doc-section" id="requisitos-sec-5" open><summary>5. Ordem, entrega e conclusão</summary><div class="section-body">
+<p>O paralelismo depende da independência entre registros. Não use o F2E quando a ordem entre registros for requisito obrigatório, a menos que o consumidor implemente uma estratégia própria de chave, reordenação ou persistência.</p>
+<pre><code>at-least-once
+      |
+      v
+duplicatas possíveis
+      |
+      v
+consumidor idempotente</code></pre>
+<p>Use eventId para deduplicar retries da mesma execução e sourceRecordId para deduplicar o mesmo registro físico entre replays. Não há transação distribuída entre SQS e DynamoDB.</p>
+<p>O modo de saída padrão é <code>single</code>: cada mensagem contém um Envelope v1. O modo <code>bundle</code> deve ser escolhido para o prefixo no SSM ou, em requisições explícitas, por <code>F2E_OUTPUT_MODE=bundle</code> na Lambda. Nesse modo, a mensagem contém um <code>BundleEnvelope</code> (<code>schemaVersion: &quot;f2e-bundle/1&quot;</code>) com envelopes completos do mesmo chunk. <code>maxEnvelopesPerMessage</code> limita a quantidade de envelopes; <code>0</code> deixa o limite de bytes determinar o agrupamento. <code>maxMessageBytes</code> limita o tamanho físico, incluindo wrapper e atributos; <code>0</code> usa o limite físico padrão. Cada envelope também respeita <code>maxEventBytes</code>. Um envelope que não cabe sozinho no bundle causa erro, sem truncamento.</p>
+<p>O consumidor do modo <code>bundle</code> precisa reconhecer o wrapper, processar cada item e deduplicar pelo <code>eventId</code> individual: uma nova entrega da mensagem pode repetir todos os seus itens. Contagens de registros e de mensagens SQS são grandezas distintas nesse modo.</p>
+<p>O job pode terminar em:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Estado</th><th scope="col">Significado</th></tr></thead><tbody>
+<tr><td>COMPLETED / SUCCESS</td><td>Todos os registros tiveram o resultado esperado.</td></tr>
+<tr><td>COMPLETED / WITH_REJECTIONS</td><td>A execução técnica terminou, mas há registros rejeitados; consultar contagens e motivos.</td></tr>
+<tr><td>FAILED</td><td>Uma falha técnica impediu resultado completo; countsComplete pode ser falso.</td></tr>
+<tr><td>REJECTED</td><td>Arquivo ou configuração não atende ao contrato antes da conclusão normal.</td></tr>
+</tbody></table></div>
+<p>O evento de conclusão não é barreira para consumo dos eventos de registros: pode ser entregue antes de todos eles serem consumidos downstream.</p>
+</div></details>
+<details class="doc-section" id="requisitos-sec-6" open><summary>6. Capacidade, back-pressure e isolamento</summary><div class="section-body">
+<p>O arquivo é a unidade de admissão; o chunk é a unidade de paralelismo e retry; o registro é a unidade lógica de saída.</p>
+<pre><code>arquivo -&gt; chunks -&gt; Workers paralelos -&gt; eventos</code></pre>
+<p>O throughput depende do número de chunks, concorrência SQS-Lambda, limites AWS, modo de saída e capacidade de consumidores. Backlogs nas filas são o mecanismo de desacoplamento e um sinal operacional de que uma etapa está mais lenta que a anterior.</p>
+<p>Os jobs preservam no snapshot a fila de saída escolhida pelo prefixo. Por padrão ela é compartilhada; um prefixo pode usar fila dedicada. A fila de chunks e a fila de conclusão permanecem únicas. Todos os prefixos compartilham o Worker e sua concorrência; uma carga intensa pode atrasar os demais. Para capacidade ou fronteira de segurança isolada, implante uma instância F2E dedicada de ponta a ponta.</p>
+</div></details>
+<details class="doc-section" id="requisitos-sec-7" open><summary>7. Decisão de adoção</summary><div class="section-body">
+<p>Antes de adotar o building block, confirme:</p>
+<ol>
+<li>O problema é File-to-Event inbound, não Event-to-File.</li>
+<li>Os registros são independentes ou suportam o tratamento de ordem no destino.</li>
+<li>A regra de fronteira e o tamanho máximo do registro são conhecidos.</li>
+<li>O arquivo, chunk, registro e mensagem cabem nos limites configurados.</li>
+<li>A janela de processamento cabe na capacidade dimensionada de Lambda e SQS.</li>
+<li>O consumidor é idempotente e suporta o contrato de saída escolhido, inclusive o wrapper e a deduplicação por item quando usar <code>bundle</code>.</li>
+<li>Há responsável por alarmes, DLQs, retenção e autorização.</li>
+<li>O replay é seguro para os efeitos de negócio; se ele for obrigatório, a versão do S3 deve ser retida.</li>
+</ol>
+</div></details>
+<details class="doc-section" id="requisitos-sec-8" open><summary>8. Referências</summary><div class="section-body">
+<ul>
+<li><a href="#arquitetura">Arquitetura</a></li>
+<li><a href="#blueprint">Blueprint arquitetural</a></li>
+<li><a href="operacao_local.md">Operação local</a></li>
+<li><a href="operacao_aws.md">Operação na AWS</a></li>
+<li><a href="runbooks.md">Runbooks</a></li>
+</ul>
+</div></details></div></article>
+<article id="arquitetura" class="page document-page" hidden><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h1>Arquitetura</h1><a class="source-link" href="arquitetura.md">Abrir Markdown original ↗</a></div><div class="architecture-map">
+<div class="section-heading"><div><p class="eyebrow">FLUXO INTERATIVO</p><h2>O caminho de um arquivo</h2></div><span>Clique em um componente</span></div>
+<div class="flow" aria-label="Caminho principal do processamento">
+<button data-node="s3" aria-pressed="true"><small>01 / ORIGEM</small><strong>Amazon S3</strong><span>Arquivo de entrada</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="intake" aria-pressed="false"><small>02 / ENTRADA</small><strong>file-intake</strong><span>Fila SQS</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="organizer" aria-pressed="false"><small>03 / PLANEJAMENTO</small><strong>Organizer</strong><span>Lambda</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="chunks" aria-pressed="false"><small>04 / TRABALHO</small><strong>chunk-jobs</strong><span>SQS compartilhada</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="worker" aria-pressed="false"><small>05 / PROCESSAMENTO</small><strong>Worker</strong><span>Lambda compartilhada</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="output" aria-pressed="false"><small>06 / ENTREGA</small><strong>output-events</strong><span>SQS → consumidores</span></button>
+</div>
+<div class="support-flow"><span>CONFIGURAÇÃO, ESTADO E OPERAÇÃO</span><button data-node="ssm" aria-pressed="false">SSM Parameter Store</button><button data-node="ledger" aria-pressed="false">DynamoDB · ledger</button><button data-node="completion" aria-pressed="false">SQS · conclusão</button><button data-node="dlq" aria-pressed="false">DLQs</button><button data-node="observability" aria-pressed="false">CloudWatch</button></div>
+<div id="node-detail" class="node-detail" aria-live="polite"></div>
+<p class="muted">Fluxo principal simplificado. Organizer consulta S3, SSM e ledger; Worker lê S3 Range GET e atualiza o ledger. Uma OrganizerRequest também pode entrar diretamente no intake.</p>
+</div><div class="document-content"><p>Este diagrama representa a implantação criada pelo Terraform na AWS. O fluxo local usa os mesmos componentes emulados pelo LocalStack. As decisões de projeto estão no <a href="adr/README.md">índice de ADRs</a>.</p>
+<blockquote>Escopo: este é um building block inbound, de arquivo S3 para eventos SQS. Ele não cobre Event-to-File, SNS como destino nem ordenação global. Consulte <a href="#requisitos">Requisitos e restrições</a> antes de adotar o fluxo.</blockquote>
+<details class="diagram-source"><summary>Código do diagrama original (Mermaid)</summary><pre><code>flowchart LR
+    classDef aws fill:#fff7ed,stroke:#d97706,color:#431407
+    classDef compute fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef queue fill:#f5f3ff,stroke:#7c3aed,color:#2e1065
+    classDef data fill:#ecfdf5,stroke:#059669,color:#064e3b
+    classDef external fill:#f8fafc,stroke:#475569,color:#0f172a
+    classDef failure fill:#fef2f2,stroke:#dc2626,color:#7f1d1d
+
+    producer[Produtor de arquivos&lt;br/&gt;ou integração]:::external
+    consumer[Consumidores de registros]:::external
+    dedicatedConsumer[Consumidores do prefixo&lt;br/&gt;com saída dedicada]:::external
+    completionConsumer[Consumidores de conclusão]:::external
+
+    subgraph AWS[Ambiente AWS / LocalStack]
+        s3[(S3: bucket de entrada&lt;br/&gt;versionado; ETag condicional se necessário)]:::aws
+        intake[[SQS: file-intake]]:::queue
+        organizer[Lambda Organizer&lt;br/&gt;admissão e planejamento]:::compute
+        ssm[(SSM Parameter Store&lt;br/&gt;limites globais e configuração por prefixo)]:::data
+        ledger[(DynamoDB: job-ledger&lt;br/&gt;jobs, chunks e outbox)]:::data
+        chunks[[SQS: chunk-jobs&lt;br/&gt;compartilhada]]:::queue
+        worker[Lambda Worker&lt;br/&gt;compartilhada]:::compute
+        output[[SQS: output-events&lt;br/&gt;saída padrão]]:::queue
+        dedicated[[SQS: output-events&lt;br/&gt;dedicada, opcional por prefixo]]:::queue
+        completion[[SQS: completion-events]]:::queue
+        intakeDLQ[[DLQ: file-intake]]:::failure
+        chunksDLQ[[DLQ: chunk-jobs]]:::failure
+        completionDLQ[[DLQ: completion-events]]:::failure
+        observability[CloudWatch Logs, métricas,&lt;br/&gt;dashboard e alarmes]:::aws
+    end
+
+    producer --&gt;|envia arquivo| s3
+    producer -.-&gt;|OrganizerRequest explícito| intake
+    s3 --&gt;|ObjectCreated dos prefixos configurados| intake
+    intake --&gt;|evento SQS; falhas parciais de lote| organizer
+    organizer &lt;--&gt;|configuração com maior&lt;br/&gt;correspondência de prefixo| ssm
+    organizer --&gt;|HeadObject da versão ou do objeto atual| s3
+    organizer &lt;--&gt;|admissão, plano e agendamento| ledger
+    organizer --&gt;|ChunkJobs com snapshot&lt;br/&gt;da configuração| chunks
+    chunks --&gt;|evento SQS| worker
+    worker --&gt;|S3 Range GET da versão&lt;br/&gt;ou leitura condicional por ETag| s3
+    worker &lt;--&gt;|estados dos chunks e&lt;br/&gt;outbox de conclusão| ledger
+    worker --&gt;|Envelope v1 ou bundles| output
+    worker --&gt;|rota configurada no ChunkJob| dedicated
+    output --&gt; consumer
+    dedicated --&gt; dedicatedConsumer
+    worker --&gt;|CompletionEvent pendente| completion
+    worker --&gt;|marca intenção entregue&lt;br/&gt;após envio ao SQS| ledger
+    completion --&gt; completionConsumer
+
+    intake -.-&gt;|excedeu tentativas| intakeDLQ
+    chunks -.-&gt;|excedeu tentativas| chunksDLQ
+    completion -.-&gt;|excedeu tentativas de consumo| completionDLQ
+    organizer -.-&gt; observability
+    worker -.-&gt; observability
+    intake -.-&gt; observability
+    chunks -.-&gt; observability
+    completion -.-&gt; observability</code></pre></details>
+<details class="doc-section" id="arquitetura-sec-1" open><summary>Leitura do fluxo</summary><div class="section-body">
+<ol>
+<li>Um upload em um prefixo configurado do S3 gera uma notificação para <code>file-intake</code>. Uma integração também pode publicar um <code>OrganizerRequest</code> explícito nessa fila.</li>
+<li>Para notificações S3, o Organizer escolhe no SSM a configuração mais específica para bucket e chave, valida os limites globais, fixa a identidade do objeto e registra no ledger a admissão e o plano. Ele publica os <code>ChunkJob</code>s na fila <code>chunk-jobs</code> compartilhada. Cada job carrega um snapshot da configuração e a rota de saída selecionada.</li>
+<li>O Worker compartilhado processa chunks em paralelo, lê os intervalos necessários do S3 e publica registros como Envelope v1 ou, quando configurado, bundles. A fila <code>output-events</code> é o destino padrão; prefixos configurados podem ter uma fila de saída dedicada.</li>
+<li>Quando o job atinge um estado terminal, o Worker reconcilia a intenção de conclusão persistida no ledger, envia o <code>CompletionEvent</code> para <code>completion-events</code> e marca a intenção como entregue após o envio. Para um array JSON vazio, o Organizer agenda uma mensagem de controle na fila de chunks para que o Worker faça essa entrega.</li>
+</ol>
+<p>No catálogo Terraform atual, <code>example-json/</code> usa uma fila de saída dedicada; <code>example-text/</code> e <code>example-multi-line/</code> usam a fila padrão. A configuração da suíte local em <code>automacao/localstack/init-aws.sh</code> usa bundles de até três envelopes e <code>recordsPerChunk</code> igual a 100 para os três exemplos.</p>
+</div></details>
+<details class="doc-section" id="arquitetura-sec-2" open><summary>Garantias e recuperação</summary><div class="section-body">
+<ul>
+<li>O ledger é compartilhado entre prefixos, assim como a fila de chunks e a concorrência máxima do Worker. Um pico de um prefixo pode atrasar os demais. Uma fila de saída dedicada isola somente o destino dos registros daquele prefixo; não cria capacidade de processamento independente.</li>
+<li>As filas de intake e chunks têm DLQs e as Lambdas usam <code>ReportBatchItemFailures</code> para repetir apenas as mensagens do lote que falharam. A fila de conclusão também tem DLQ para falhas de consumo. O provisionamento atual não cria DLQ para as filas de saída dos registros: consumidores devem definir sua política de falha e redrive.</li>
+<li>A entrega de registros e de eventos de conclusão é <em>at-least-once</em>. Consumidores devem deduplicar registros pelo <code>eventId</code> durante retries e pelo <code>sourceRecordId</code> entre replays. Um envio de conclusão confirmado no SQS seguido de falha antes da marcação no ledger pode reenviar o mesmo <code>eventId</code>.</li>
+<li>O evento de conclusão sinaliza o estado terminal do job, mas não confirma que os consumidores já processaram todos os eventos de registro. As filas SQS Standard também não preservam ordem global entre chunks.</li>
+</ul>
+</div></details>
+<details class="doc-section" id="arquitetura-sec-3" open><summary>Código e infraestrutura relacionados</summary><div class="section-body">
+<ul>
+<li><code>cmd/organizer</code> e <code>internal/application/organizer</code>: entrada, seleção de configuração, admissão, planejamento e publicação de chunks.</li>
+<li><code>cmd/worker</code> e <code>internal/application/worker</code>: leitura, parsing, publicação de registros e entrega da outbox de conclusão.</li>
+<li><code>internal/platform/aws/ledger.go</code>: estados e intenção durável de conclusão.</li>
+<li><code>terraform/s3.tf</code>, <code>terraform/ssm.tf</code>, <code>terraform/sqs.tf</code> e <code>terraform/lambda.tf</code>: entrada, configuração, filas e gatilhos.</li>
+<li><code>terraform/dynamodb.tf</code> e <code>terraform/monitoring.tf</code>: ledger e observabilidade.</li>
+</ul>
+</div></details></div></article>
+<article id="blueprint" class="page document-page" hidden><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h1>Blueprint arquitetural</h1><a class="source-link" href="blueprint_arquitetural.md">Abrir Markdown original ↗</a></div><div class="document-content"><details class="doc-section" id="blueprint-sec-1" open><summary>1. Objetivo</summary><div class="section-body">
+<p>Este documento consolida o blueprint do F2E (File-to-Events): uma interface que transforma arquivos versionados no Amazon S3 em eventos de registros no Amazon SQS. O foco são responsabilidades, garantias, recuperação, capacidade e limites para operadores e consumidores.</p>
+<p>Os critérios normativos de elegibilidade, escopo e limites estão em <a href="#requisitos">Requisitos e restrições</a>. Este blueprint detalha as decisões e os trade-offs da implementação atual.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-2" open><summary>2. Visão arquitetural</summary><div class="section-body">
+<p>O F2E fica entre uma origem baseada em arquivos e consumidores orientados a eventos. Ele admite uma identidade de arquivo — uma versão imutável quando disponível, ou <code>ETag</code> condicional —, divide o trabalho em chunks, extrai registros e os publica em uma fila de saída compartilhada ou dedicada ao prefixo. A implantação possui uma fila de chunks e um Worker compartilhados.</p>
+<pre><code>Arquivo versionado no S3
+          |
+          v
+SQS file-intake
+          |
+          v
+Lambda Organizer
+          |
+          v
+SQS chunk-jobs (compartilhada)
+          |
+          v
+Lambda Worker (compartilhada)
+          |
+          v
+SQS output-events (padrão) ou fila dedicada de saída
+          |
+          v
+Consumidores downstream</code></pre>
+<p>O DynamoDB mantém o ledger de admissão, plano, chunks e estados terminais. O Worker entrega eventos técnicos de conclusão a partir da outbox durável.</p>
+<pre><code>DynamoDB job-ledger -&gt; Worker -&gt; SQS completion-events</code></pre>
+</div></details>
+<details class="doc-section" id="blueprint-sec-3" open><summary>3. Limites de responsabilidade</summary><div class="section-body">
+<p>O F2E é responsável por converter uma identidade de arquivo fixada na admissão em eventos rastreáveis. Ele não executa regra de negócio downstream nem garante que cada efeito de negócio seja aplicado uma única vez.</p>
+<p>O escopo é inbound, File-to-Event. Event-to-File é deliberadamente externo ao building block, e SNS não é um destino implementado por esta versão.</p>
+<pre><code>ORIGEM                         F2E                              DESTINO
+------                         ---                              -------
+Produz arquivo          -&gt;     Admite e planeja            -&gt;   Consome evento
+Define conteúdo         -&gt;     Lê e interpreta registros   -&gt;   Aplica negócio
+Envia ao S3             -&gt;     Publica Envelope v1         -&gt;   Persiste estado
+                           Registra execução e conclusão       Deduplica efeitos</code></pre>
+<h3>Responsabilidades do F2E</h3>
+<ul>
+<li>Receber notificações S3 ou requisições explícitas na fila de intake.</li>
+<li>Selecionar a configuração de bucket e prefixo e registrar seu snapshot.</li>
+<li>Operar sobre a versão específica do objeto S3.</li>
+<li>Planejar, agendar e processar unidades de trabalho.</li>
+<li>Interpretar arquivos text, json em array e multi-line.</li>
+<li>Publicar Envelope v1 por registro, ou bundles quando configurado.</li>
+<li>Registrar estados, contadores, falhas e conclusão do job.</li>
+<li>Manter as DLQs provisionadas, logs, métricas e alarmes de infraestrutura.</li>
+</ul>
+<h3>Responsabilidades fora do F2E</h3>
+<ul>
+<li>Produzir o arquivo e validar sua semântica de negócio.</li>
+<li>Persistir efeitos de negócio e gerar novos eventos de domínio.</li>
+<li>Deduplicar efeitos nos consumidores.</li>
+<li>Decidir correção e reprocessamento de mensagens em DLQ.</li>
+<li>Governar retenção, permissões e capacidade dos consumidores.</li>
+<li>Impor ordenação de negócio entre registros.</li>
+</ul>
+</div></details>
+<details class="doc-section" id="blueprint-sec-4" open><summary>4. Fluxo completo e posição do F2E</summary><div class="section-body">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Etapa</th><th scope="col">Responsabilidade</th><th scope="col">F2E</th></tr></thead><tbody>
+<tr><td>Geração</td><td>Sistema de origem cria o arquivo</td><td>Não</td></tr>
+<tr><td>Armazenamento</td><td>S3 guarda uma versão do objeto</td><td>Infraestrutura AWS</td></tr>
+<tr><td>Entrada</td><td>Notificação S3 ou requisição chega à fila</td><td>Sim</td></tr>
+<tr><td>Configuração</td><td>Prefixo seleciona contrato e limites no SSM</td><td>Sim</td></tr>
+<tr><td>Admissão</td><td>Arquivo é deduplicado e registrado</td><td>Sim</td></tr>
+<tr><td>Planejamento</td><td>Arquivo se torna manifesto de chunks</td><td>Sim</td></tr>
+<tr><td>Processamento</td><td>Worker lê intervalos e extrai registros</td><td>Sim</td></tr>
+<tr><td>Publicação</td><td>Envelopes seguem para fila de saída</td><td>Sim</td></tr>
+<tr><td>Consumo</td><td>Regra de negócio e persistência</td><td>Não</td></tr>
+<tr><td>Conclusão</td><td>Resultado terminal segue para fila própria</td><td>Sim</td></tr>
+<tr><td>Replay</td><td>Operador inicia a partir do ledger</td><td>Parcial</td></tr>
+</tbody></table></div>
+</div></details>
+<details class="doc-section" id="blueprint-sec-5" open><summary>5. Unidades de trabalho e paralelismo</summary><div class="section-body">
+<p>O arquivo é a unidade de admissão e conclusão. O chunk é a unidade de retry, agendamento e paralelismo. O registro é a unidade lógica entregue ao destino.</p>
+<pre><code>1 arquivo (job)
+     |
+     +--&gt; chunk 00000001 --&gt; vários registros --&gt; eventos de saída
+     +--&gt; chunk 00000002 --&gt; vários registros --&gt; eventos de saída
+     +--&gt; chunk 00000003 --&gt; vários registros --&gt; eventos de saída</code></pre>
+<p>O Organizer cria faixas nominais de bytes para texto; o Worker resolve as fronteiras dos registros ao ler as faixas. JSON e multi-line usam suas regras estruturais de delimitação. O Worker usa S3 Range GET para ler apenas o trecho que precisa processar. Em <code>text</code>, <code>targetChunkBytes</code> pode orientar o número de chunks; sem esse valor, o planejamento visa 100 chunks, respeitando os limites mínimo e máximo de tamanho.</p>
+<p>O paralelismo real é limitado por:</p>
+<ul>
+<li>Quantidade de chunks planejados.</li>
+<li>Mensagens na fila compartilhada de chunks.</li>
+<li>Concorrência global do mapeamento SQS para o Worker.</li>
+<li>Concorrência reservada, memória e timeout do Worker.</li>
+<li>Limites de conta e capacidade de S3, SQS e DynamoDB.</li>
+<li>Capacidade dos consumidores da fila de saída compartilhada ou dedicada.</li>
+</ul>
+<p>Mais concorrência não aumenta throughput quando o arquivo gera um único chunk ou quando o destino é o gargalo.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-6" open><summary>6. Configuração e roteamento por prefixo</summary><div class="section-body">
+<p>Cada prefixo registrado possui uma configuração no SSM Parameter Store. Para notificações S3, o Organizer escolhe a correspondência de prefixo mais longa e anexa um snapshot ao job, incluindo a versão e o hash do parâmetro. Mudanças posteriores afetam novas admissões, sem alterar jobs já admitidos. Limites globais também vêm do SSM. Requisições explícitas usam a configuração do contrato e os padrões da Lambda, sem seleção de prefixo no SSM. Os padrões de <code>outputMode</code>, <code>maxEnvelopesPerMessage</code> e <code>maxMessageBytes</code> também entram na configuração dos chunks dessas requisições.</p>
+<pre><code>s3://bucket/financeiro/arquivo.txt  --&gt; configuração financeiro/
+s3://bucket/financeiro/diario/x.txt --&gt; configuração financeiro/diario/
+                                          (correspondência mais específica)</code></pre>
+<p>A infraestrutura cria uma fila de chunks com DLQ, um Worker e uma fila de saída padrão. Um prefixo pode optar por uma fila de saída dedicada; o Terraform provisiona essa fila e grava sua URL na configuração SSM. <code>prefixId</code> e a URL de saída seguem no snapshot do job. O Worker publica na fila indicada pelo job ou, na ausência dela, na fila padrão. O exemplo <code>example-json/</code> usa fila dedicada; os exemplos <code>example-text/</code> e <code>example-multi-line/</code> usam a fila padrão.</p>
+<p>Chunks de todos os prefixos disputam a mesma capacidade do Worker. A role IAM do Worker pode publicar nas filas de saída provisionadas e na fila de conclusão; não há isolamento de execução ou permissão por prefixo. O ledger DynamoDB também é compartilhado e não isola itens por IAM. Quando uma carga exigir capacidade ou fronteira de segurança própria, a decisão é implantar um F2E dedicado de ponta a ponta, conforme o <a href="adr/0009-implantacao-simples-compartilhada.md">ADR 0009</a>.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-7" open><summary>7. Entrega e idempotência</summary><div class="section-body">
+<p>O F2E oferece comportamento at-least-once. SQS pode reentregar mensagens, e não existe transação distribuída entre enviar uma mensagem e gravar um checkpoint no ledger.</p>
+<pre><code>Worker publica evento no SQS
+          |
+          v
+falha antes de confirmar o chunk no ledger
+          |
+          v
+SQS reentrega o ChunkJob
+          |
+          v
+possível nova publicação do mesmo registro</code></pre>
+<p>O ledger reduz duplicações técnicas, mas consumidores precisam ser idempotentes.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Identificador</th><th scope="col">Uso</th></tr></thead><tbody>
+<tr><td>fileId</td><td>Identidade física do arquivo: versão imutável ou <code>ETag</code>/tamanho observados na admissão.</td></tr>
+<tr><td>jobId</td><td>Execução; muda em um replay explícito.</td></tr>
+<tr><td>chunkId</td><td>Unidade de processamento dentro do job.</td></tr>
+<tr><td>eventId</td><td>Deduplicação de retries da mesma execução.</td></tr>
+<tr><td>sourceRecordId</td><td>Deduplicação do mesmo registro físico entre replays.</td></tr>
+<tr><td>IDs de correlação</td><td>Propagam transactionId, correlationId e traceId.</td></tr>
+</tbody></table></div>
+<p>Use eventId para retries da mesma execução e sourceRecordId para impedir repetição entre replays. A persistência de uma chave de idempotência ou uma operação de negócio naturalmente idempotente continua sendo responsabilidade do consumidor.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-8" open><summary>8. Retry, DLQ e mensagens problemáticas</summary><div class="section-body">
+<p>O retry ocorre em duas camadas: o código tenta novamente operações de publicação em lote de forma limitada; caso a falha persista, a mensagem SQS permanece disponível para uma nova tentativa. As Lambdas usam falhas parciais de lote para não repetir mensagens que já terminaram com sucesso.</p>
+<pre><code>Falha ao publicar
+      |
+      v
+retry local limitado
+      |
+      +--&gt; sucesso: checkpoint e continuidade
+      |
+      +--&gt; falha: redelivery SQS
+                         |
+                         v
+                  maxReceiveCount excedido
+                         |
+                         v
+                        DLQ</code></pre>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Caminho</th><th scope="col">Destino de falha</th></tr></thead><tbody>
+<tr><td>file-intake</td><td>DLQ de intake</td></tr>
+<tr><td>chunk-jobs</td><td>DLQ de chunks compartilhada</td></tr>
+<tr><td>saída</td><td>O F2E não provisiona DLQ de consumo para a fila padrão ou dedicada; o consumidor define seu redrive.</td></tr>
+<tr><td>conclusão</td><td>DLQ de completion-events</td></tr>
+</tbody></table></div>
+<p>DLQ isola a mensagem problemática; não a corrige nem a reprocessa sozinha. A operação deve investigar a causa e confirmar se o replay é seguro.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-9" open><summary>9. Back-pressure e quotas</summary><div class="section-body">
+<p>As filas SQS desacoplam a velocidade da origem, processamento e consumo.</p>
+<pre><code>S3 mais rápido que Organizer    --&gt; backlog em file-intake
+Organizer mais rápido que Worker --&gt; backlog em chunk-jobs compartilhada
+Worker mais rápido que destino   --&gt; backlog na fila de saída usada pelo job</code></pre>
+<p>O dimensionamento de filas, concorrência, tamanho de arquivo e capacidade downstream controla o backlog. Não há quota de admissão persistida no ledger. Uma carga de um prefixo pode atrasar os demais na fila de chunks compartilhada. Uma fila de saída dedicada separa apenas o backlog de consumo daquele prefixo.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-10" open><summary>10. Conclusão e outbox</summary><div class="section-body">
+<p>Quando o job se torna terminal, o ledger grava uma intenção de conclusão na mesma transição persistente. O Worker envia o evento para a fila de conclusão e só então confirma a entrega no ledger.</p>
+<pre><code>Job terminal + intenção pendente (DynamoDB)
+                    |
+                    v
+                 Worker
+                    |
+                    v
+          SQS completion-events
+                    |
+                    v
+       marca a intenção como entregue</code></pre>
+<p>Uma nova entrega do chunk ou da mensagem de controle reconcilia intenções pendentes. Isso cobre falha entre registrar a intenção e entregá-la. Se a falha ocorrer depois do envio e antes da confirmação, pode haver duplicação; o eventId de conclusão permanece estável.</p>
+<p>O evento de conclusão não é barreira de consumo: ele pode chegar antes de os consumidores terminarem de ler os eventos de registros.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-11" open><summary>11. Ordenação, contrato e replay</summary><div class="section-body">
+<p>As filas provisionadas são SQS Standard. Não há ordenação global de eventos, nem ordenação garantida entre chunks processados em paralelo. O Worker preserva a montagem determinística dentro de um chunk, mas consumidores não devem tratar isso como garantia de ordem na fila.</p>
+<p>O contrato de registros é o Envelope v1, com origem, posição, identificadores e versão de schema. No modo <code>single</code>, cada mensagem contém um envelope. No modo <code>bundle</code>, uma mensagem contém múltiplos envelopes, até os limites configurados de quantidade e bytes; o consumidor precisa suportar esse formato. O lote SQS (<code>batchSize</code>) controla quantas mensagens físicas são enviadas por chamada, não quantos registros cabem em cada bundle. O Worker pode enviar lotes em paralelo conforme <code>F2E_PUBLISH_CONCURRENCY</code>, sem criar garantia de ordem na fila.</p>
+<p>O ledger armazena o plano imutável e checkpoints de agendamento. Ele permite:</p>
+<ul>
+<li>Retomar chunks planejados cuja publicação não foi confirmada.</li>
+<li>Executar replay explícito de um job ou subconjunto de chunks com novo jobId.</li>
+</ul>
+<p>Em um replay, sourceRecordId continua associado ao mesmo registro físico e eventId muda. Antes de reprocessar, confirme a estratégia de deduplicação e a disponibilidade da versão original no S3.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-12" open><summary>12. Observabilidade operacional</summary><div class="section-body">
+<p>O Terraform provisiona logs em CloudWatch, dashboard e alarmes para Lambdas, filas principais e DLQs de intake, chunks e conclusão. O monitoramento definido em <code>terraform/monitoring.tf</code> não inclui as filas de saída dedicadas. Acompanhe principalmente:</p>
+<ul>
+<li>Idade e quantidade de mensagens nas filas.</li>
+<li>Qualquer mensagem em DLQ.</li>
+<li>Erros, throttles, duração e concorrência das Lambdas.</li>
+<li>Contadores do ledger e IDs jobId, fileId, chunkId e eventId.</li>
+<li>IDs de correlação propagados no envelope.</li>
+</ul>
+<p>Não há DynamoDB Stream no caminho de conclusão: o Worker reconcilia e publica a intenção persistida no ledger.</p>
+</div></details>
+<details class="doc-section" id="blueprint-sec-13" open><summary>13. Trade-offs e perguntas de evolução</summary><div class="section-body">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Decisão</th><th scope="col">Benefício</th><th scope="col">Consequência</th></tr></thead><tbody>
+<tr><td>S3 versionado (preferível)</td><td>Origem imutável e replay reproduzível</td><td>Exige retenção e permissões para versões.</td></tr>
+<tr><td>S3 não versionado</td><td>Menor exigência para a origem</td><td>Usa <code>ETag</code> condicional; sobrescrita falha o job e inviabiliza replay do conteúdo original.</td></tr>
+<tr><td>SQS Standard</td><td>Desacoplamento e escala simples</td><td>Duplicatas e ausência de ordenação.</td></tr>
+<tr><td>Chunks paralelos</td><td>Throughput para arquivos grandes</td><td>Ordem entre chunks não é preservada.</td></tr>
+<tr><td>Ledger DynamoDB</td><td>Auditoria, recuperação e replay</td><td>Estado operacional e custo de escrita.</td></tr>
+<tr><td>Outbox no ledger + reconciliação pelo Worker</td><td>Conclusão recuperável após reentrega de chunk ou controle</td><td>Entrega continua at-least-once.</td></tr>
+<tr><td>Worker e fila de chunks compartilhados</td><td>Menos recursos e operação mais simples</td><td>Prefixos disputam a mesma capacidade.</td></tr>
+<tr><td>Fila de saída dedicada opcional</td><td>Separa o backlog de consumo de um prefixo</td><td>Exige provisionamento e operação da fila adicional.</td></tr>
+</tbody></table></div>
+<p>Antes de incluir um prefixo, formato ou consumidor, responda:</p>
+<ul>
+<li>Qual é o volume, tamanho máximo e perfil de pico dos arquivos?</li>
+<li>Quantos chunks serão criados e como a carga dividirá a capacidade compartilhada?</li>
+<li>O consumidor suporta duplicação, replays e, se aplicável, bundles?</li>
+<li>Existe requisito real de ordenação? Se sim, qual é a chave?</li>
+<li>Quem monitora as DLQs de intake, chunks e conclusão, e o redrive do consumidor?</li>
+<li>A versão do arquivo continua acessível durante a janela de recuperação?</li>
+<li>Quais identidades podem publicar requisições explícitas?</li>
+<li>Retenção, criptografia, dados sensíveis e alarmes têm responsáveis definidos?</li>
+</ul>
+</div></details>
+<details class="doc-section" id="blueprint-sec-14" open><summary>14. Referências de implementação</summary><div class="section-body">
+<ul>
+<li>cmd/organizer: entrada, admissão e planejamento.</li>
+<li>cmd/worker: processamento, publicação de registros e conclusões.</li>
+<li>internal/application: casos de uso e portas.</li>
+<li>internal/domain/f2e: contratos, estados, envelopes e identificadores.</li>
+<li>terraform: recursos AWS compartilhados e fila de saída dedicada opcional.</li>
+<li><a href="#arquitetura">Desenho arquitetural</a>: topologia visual.</li>
+<li><a href="operacao_aws.md">Operação na AWS</a> e <a href="runbooks.md">runbooks</a>: operação.</li>
+</ul>
+</div></details></div></article>
+<section id="benchmarks" class="page" hidden>
+<p class="eyebrow">EVIDÊNCIAS / DESEMPENHO</p><h1>Resultados dos benchmarks</h1><p class="lead">Medições reais, com o contexto de cada execução. Registros lógicos e mensagens físicas são unidades distintas no modo bundle.</p>
+<div class="tabs" role="tablist" aria-label="Ambiente de benchmark"><button id="tab-aws" role="tab" aria-selected="true" aria-controls="bench-aws" data-bench="aws">Matriz AWS</button><button id="tab-local" role="tab" aria-selected="false" aria-controls="bench-local" tabindex="-1" data-bench="local">LocalStack</button><button id="tab-historico" role="tab" aria-selected="false" aria-controls="bench-historico" tabindex="-1" data-bench="historico">Histórico AWS</button></div>
+<div id="bench-aws" role="tabpanel" aria-labelledby="tab-aws">
+<div class="benchmark-intro"><span class="badge">4 perfis concluídos</span><span>09 set 2026 · 5.000.000 de registros · 10 Workers</span></div>
+<div class="chart-card"><div class="section-heading"><div><p class="eyebrow">MEMÓRIA × DESEMPENHO</p><h2 id="chart-title">Tempo ponta a ponta</h2></div><label class="metric-control">Métrica<select id="metric"><option value="seconds">Tempo ponta a ponta (s)</option><option value="throughput">Vazão do fluxo (registros/s)</option><option value="worker">Capacidade por Worker (registros/s)</option></select></label></div><p id="chart-hint" class="muted"></p><div id="chart" aria-label="Comparação de quatro perfis de memória"></div><p class="chart-foot">Selecione uma barra para inspecionar o perfil. Valores observados na carga completa.</p></div>
+<div id="profile-detail" class="profile-detail" aria-live="polite"></div>
+<div class="table-wrap"><table><caption>Resultados completos · matriz AWS em bundle</caption><thead><tr><th scope="col">Memória</th><th scope="col">Smoke 10 mil</th><th scope="col">5 milhões</th><th scope="col">Vazão do fluxo</th><th scope="col">Por Worker</th><th scope="col">Throttles</th></tr></thead><tbody id="aws-rows"></tbody></table></div>
+<div class="note"><strong>Como interpretar</strong><p>80 chunks de 62.500 linhas de 100 bytes; publicação interna com concorrência 8; bundles de até 250 KiB, cerca de 302 registros por mensagem; timeout de 600 s. As quatro cargas concluíram sem erros, rejeições ou DLQs. Houve um throttling em 128 MiB.</p><p>A capacidade por Worker usa a duração média da invocação; não equivale à vazão do fluxo. As projeções ideais do relatório não incluem orquestração e não são usadas no gráfico. Estes dados não determinam, isoladamente, o menor custo.</p></div>
+<p class="provenance">Fonte versionada: <a href="#aws-matriz">relatório da matriz AWS</a>. O JSON bruto citado pelo relatório não está presente neste checkout.</p>
+</div>
+<div id="bench-local" role="tabpanel" aria-labelledby="tab-local" hidden>
+<div class="benchmark-intro"><span class="badge">Execução completa</span><span>07 set 2026 · LocalStack · bundles de até 24.000 bytes / 100 envelopes</span></div>
+<div class="stats"><div><span>TEMPO DE PROCESSAMENTO</span><strong>197,790 <em>s</em></strong><small>upload: 3,785 s, separado</small></div><div><span>VAZÃO DE PROCESSAMENTO</span><strong>25.279,34</strong><small>registros/s</small></div><div><span>MENSAGENS FÍSICAS</span><strong>178.539</strong><small>5 milhões de registros publicados</small></div></div>
+<p>100/100 chunks concluídos, zero registros rejeitados ou ignorados e DLQs de intake e chunks vazias. Máquina: Intel Core i7-13700H, 20 threads; Docker Desktop com 20 CPUs e aproximadamente 15,4 GiB de RAM.</p>
+<p class="provenance">Evidência preservada: <a href="site/dados/local-5m-20260907T211528Z.json">report.json · 20260907T211528Z ↗</a></p>
+<h2>Matriz local de memória × CPU</h2><p>Execução <code>20260908T234320Z</code>. Todos os smokes de 10 mil concluíram. As cargas completas disponíveis falharam; não representam uma medição válida de vazão para 5 milhões.</p>
+<div class="table-wrap"><table><caption>Cargas completas · 5 milhões de registros esperados</caption><thead><tr><th scope="col">Memória / vCPU</th><th scope="col">Situação</th><th scope="col">Chunks</th><th scope="col">Registros confirmados</th><th scope="col">DLQ intake / chunks</th></tr></thead><tbody id="local-rows"></tbody></table></div>
+<div class="note"><strong>Limite da comparação</strong><p>As quotas rígidas de CPU do Docker não reproduzem a alocação proporcional da Lambda. O tempo de processamento local também não tem o mesmo escopo do tempo ponta a ponta AWS. Não compare diretamente esses números para dimensionar produção.</p></div><p class="provenance">Evidência preservada: <a href="site/dados/matriz-local-20260908T234320Z.json">summary.json local ↗</a>. O perfil de 256 MiB só possui smoke neste consolidado.</p>
+</div>
+<div id="bench-historico" role="tabpanel" aria-labelledby="tab-historico" hidden>
+<div class="history-card"><span class="badge">Concluído · 08 set 2026</span><h2>Baseline AWS: uma mensagem por registro</h2><p class="big-number">732,238 <span>s ponta a ponta</span></p><p>5 milhões de registros e de mensagens físicas · 6.828,38 mensagens/s · 100/100 chunks · 1.024 MB · até 10 Workers · publicação interna serial · zero erros, throttles e DLQs.</p><p>Memória pico: 46 MB. A invocação mais longa durou 58,874 s, próxima do timeout de 60 s observado. O harness foi ajustado posteriormente; a medição original conserva esse contexto.</p><a href="#aws-inicial">Abrir relatório completo →</a></div>
+<div class="history-card"><span class="badge warning">Não elegível · 08 set 2026</span><h2>P3: investigação de memória e timeout</h2><p>128 e 256 MiB foram rejeitados no preflight. As cargas de capacidade em 512 e 1.024 MiB não concluíram; em 1.024 MiB, 9/9 invocações expiraram aos 60 s, com pico de apenas 64 MB.</p><p>Um teste adicional de bundle em 128 MiB expirou ainda no smoke, antes de publicar mensagens. A massa de 5 milhões não foi iniciada. A matriz concluída de 09/09 usa outra configuração e o empacotador incremental.</p><a href="#p3">Abrir investigação completa →</a></div>
+<div class="note"><strong>Configurações diferentes</strong><p>Baseline single, investigação P3 e matriz bundle possuem tamanhos de chunk, concorrência de publicação e timeouts diferentes. A variação entre essas execuções não pode ser atribuída somente à memória.</p></div>
+</div>
+<div class="section-heading reports-heading"><div><p class="eyebrow">FONTES E REPRODUTIBILIDADE</p><h2>Relatórios completos</h2></div><button class="button" id="download-csv">Baixar matriz AWS · CSV ↓</button></div>
+<details class="report"><summary>AWS · matriz de memória</summary><article id="aws-matriz" class="benchmark-report"><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h3>AWS · matriz de memória</h3><a class="source-link" href="benchmark/benchmark-aws-memory-matrix.md">Abrir Markdown original ↗</a></div><div class="document-content"><p>Esta é a validação na AWS da matriz local de memória × CPU. Para cada perfil, o harness executa primeiro um smoke de 10.000 linhas e só inicia a carga de 5.000.000 se as invariantes do ledger e das DLQs forem aprovadas.</p>
+<pre><code>./automacao/benchmark-aws-memory-matrix.sh</code></pre>
+<p>A matriz padrão é 128, 256, 512 e 1.024 MiB. Diferentemente do Docker local, a CPU não é limitada artificialmente: cada execução recebe a CPU proporcional à memória provisionada pela AWS Lambda. Isso faz desta a medição adequada para decidir o tamanho de produção.</p>
+<p>O perfil mantém a massa local de linhas de 100 bytes. Como a aplicação exige chunks de ao menos 5 MiB e o Organizer redistribui o arquivo em partes iguais, o alvo AWS é 6.250.000 bytes: 80 chunks exatos de 62.500 linhas na massa de 5 milhões. Isso preserva a fronteira das linhas. O benchmark usa até 10 Workers, publicação interna com concorrência 8, saída em bundles de até 250 KiB e sem limite de envelopes por mensagem. O timeout do Worker é 600 s e o timeout de visibilidade do SQS é 3.600 s; o limite global por perfil é seis horas. O timeout individual da Lambda não pode ultrapassar 900 s, uma restrição da AWS. Cada Worker usa <code>provided.al2023</code> e a arquitetura configurada no <code>aws.local.tfvars</code>.</p>
+<p>Os artefatos são gravados em <code>automacao/resultados/benchmark-aws-memory-matrix/&lt;run-id&gt;/</code>. Cada perfil tem os relatórios completos do harness AWS, inclusive telemetria CloudWatch de CPU, memória, GC, duração, erros, throttles e DLQs; <code>summary.json</code> consolida as etapas disponíveis.</p>
+<p>O ambiente <code>development</code> é criado de forma descartável e destruído ao fim, inclusive em falha. O harness subjacente também confirma a conta definida em <code>aws.local.tfvars</code> antes de provisionar recursos.</p>
+<details class="doc-section" id="aws-matriz-sec-1" open><summary>Resultado — execução <code>20260909T123015Z</code></summary><div class="section-body">
+<p>O <code>summary.json</code> desta execução contém resultados completos para 128, 256, 512 e 1.024 MiB. A unidade abaixo é <strong>registro lógico</strong> (linha de entrada), e não mensagem SQS: cada mensagem de saída agrupou cerca de 302 registros no teste de 5 milhões.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Memória Lambda</th><th scope="col">Smoke 10k (fim a fim)</th><th scope="col">Capacidade média estimada por Worker</th><th scope="col">Projeção ideal para 5 milhões (10 Workers)</th><th scope="col">Capacidade média por Worker — 5 milhões</th><th scope="col">Resultado real — 5 milhões</th></tr></thead><tbody>
+<tr><td><strong>128 MiB</strong></td><td>16,38 s</td><td><strong>~1.707 registros/s</strong></td><td>~292,9 s</td><td><strong>~3.152 registros/s</strong></td><td><strong>Concluído em 255,21 s</strong>; 19.592 registros/s no fluxo; 1 throttling</td></tr>
+<tr><td><strong>256 MiB</strong></td><td>16,87 s</td><td><strong>~3.590 registros/s</strong></td><td>~139,3 s</td><td><strong>~6.283 registros/s</strong></td><td><strong>Concluído em 149,07 s</strong>; 33.541 registros/s no fluxo</td></tr>
+<tr><td><strong>512 MiB</strong></td><td>8,59 s</td><td><strong>~7.225 registros/s</strong></td><td>~69,2 s</td><td><strong>~12.782 registros/s</strong></td><td><strong>Concluído em 96,04 s</strong>; 52.062 registros/s no fluxo</td></tr>
+<tr><td><strong>1.024 MiB</strong></td><td>8,51 s</td><td><strong>~13.133 registros/s</strong></td><td>~38,1 s</td><td><strong>~24.517 registros/s</strong></td><td><strong>Concluído em 66,76 s</strong>; 74.901 registros/s no fluxo</td></tr>
+</tbody></table></div>
+<p>A capacidade estimada por Worker é <code>10.000 / duração média da invocação Worker no smoke</code>. A capacidade medida para 5 milhões é <code>62.500 / duração média da invocação Worker nessa carga</code>. A projeção é um limite idealizado, calculado com dez Workers ativos continuamente; ela não inclui o tempo de orquestração, escalonamento e coordenação das filas. Por isso o resultado real é a referência para decisão.</p>
+<p>As quatro cargas completas terminaram sem erros, rejeições ou mensagens em DLQ. O perfil de 128 MiB registrou um throttling isolado. Entre 256 e 512 MiB, a capacidade do Worker cresceu 103% e o throughput do fluxo, 55%.</p>
+<p>Os dados de origem estão em <code>automacao/resultados/benchmark-aws-memory-matrix/20260909T123015Z/summary.json</code>.</p>
+</div></details>
+<details class="doc-section" id="aws-matriz-sec-2" open><summary>Personalização</summary><div class="section-body">
+<pre><code>BENCHMARK_AWS_MEMORY_MATRIX=&#x27;256 512&#x27; \
+BENCHMARK_AWS_PUBLISH_CONCURRENCY=4 \
+BENCHMARK_AWS_RECORDS_PER_CHUNK=50000 \
+./automacao/benchmark-aws-memory-matrix.sh</code></pre>
+<p>Se o DNS local direcionar o hostname regional do SSM para um endpoint privado inacessível, use o endpoint dual-stack público da região:</p>
+<pre><code>BENCHMARK_AWS_SSM_ENDPOINT_URL=&#x27;https://ssm.us-east-1.api.aws&#x27; \
+./automacao/benchmark-aws-memory-matrix.sh</code></pre>
+<p>Para uma execução exploratória menor, ajuste explicitamente <code>BENCHMARK_AWS_FULL_RECORDS</code>; esse resultado não deve substituir a decisão da matriz de 5 milhões de linhas.</p>
+</div></details></div></article></details>
+<details class="report"><summary>AWS · execução inicial</summary><article id="aws-inicial" class="benchmark-report"><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h3>AWS · execução inicial</h3><a class="source-link" href="benchmark/benchmark-aws-5m.md">Abrir Markdown original ↗</a></div><div class="document-content"><p>Este benchmark é apartado da suíte funcional e precisa ser chamado explicitamente. Seu perfil inicial representa o pior caso de empacotamento: cada linha vira exatamente um envelope e uma mensagem física no SQS.</p>
+<pre><code>./automacao/benchmark-aws-5m.sh</code></pre>
+<p>O harness sobe um ambiente <code>development</code> descartável, aplica limite de concorrência de <strong>10 Workers</strong> no poller SQS e executa os casos em sequência:</p>
+<ol>
+<li>smoke test com 10.000 linhas;</li>
+<li>somente se o smoke test for integralmente validado, teste com 5.000.000 de linhas.</li>
+</ol>
+<p>Cada linha tem 100 bytes incluindo LF. O arquivo completo possui 500.000.000 bytes. O smoke usa 10 chunks de 1.000 registros; o caso completo usa 100 chunks de 50.000 registros, mantendo dez Workers ocupados sem obrigar o Organizer a fazer milhares de buscas de fronteira no S3. O envio usa <code>SendMessageBatch</code> com até dez entradas, mas cada entrada continua sendo uma mensagem SQS independente com apenas um envelope.</p>
+<details class="doc-section" id="aws-inicial-sec-1" open><summary>Segurança e isolamento</summary><div class="section-body">
+<p>O script recusa contas diferentes de <code>aws_account_id</code> e ambientes diferentes de <code>development</code> no <code>aws.local.tfvars</code>. Como a topologia atual ainda mantém o Worker legado e Workers por prefixo sobre a fila compartilhada de chunks, o benchmark habilita apenas o Worker de <code>example-text</code> e desabilita os demais event-source mappings durante a execução. Por padrão, chama <code>parar-ambiente-aws.sh</code> ao terminar ou falhar.</p>
+<p>Na conta da execução inicial, a cota regional de concorrência é 10 e a AWS exige manter 10 unidades não reservadas. Por isso o Worker fica sem reserva dedicada (<code>ReservedConcurrentExecutions = -1</code>) e o teto exato de 10 é imposto por <code>ScalingConfig.MaximumConcurrency</code> no event-source mapping.</p>
+<p>Para manter o ambiente temporariamente após o teste:</p>
+<pre><code>BENCHMARK_KEEP_ENVIRONMENT=1 ./automacao/benchmark-aws-5m.sh</code></pre>
+</div></details>
+<details class="doc-section" id="aws-inicial-sec-2" open><summary>Métricas e artefatos</summary><div class="section-body">
+<p>Os resultados são gravados em <code>automacao/resultados/benchmark-aws-5m/&lt;run-id&gt;/</code> (diretório ignorado pelo Git):</p>
+<ul>
+<li><code>report.json</code>: resultado consolidado;</li>
+<li><code>10k/report.json</code> e <code>5m/report.json</code>: duração, throughput e invariantes;</li>
+<li><code>worker-configuration.json</code>: memória, timeout, arquitetura, variáveis e concorrência reservada da Lambda;</li>
+<li><code>event-source-mappings.json</code>: prova do limite de 10 Workers;</li>
+<li><code>terraform-benchmark.tfvars.json</code>: overrides efetivamente aplicados depois do <code>aws.local.tfvars</code>;</li>
+<li><code>*/cpu-summary.json</code>: CPU de processo por invocação, média, p95 e pico;</li>
+<li><code>*/memory-summary.json</code>: memória máxima dos eventos <code>platform.report</code>, média, p95 e pico;</li>
+<li><code>*/cloudwatch-*.json</code>: métricas nativas de invocações, concorrência, duração, erros e throttles;</li>
+<li><code>*/cloudwatch-logs.json</code>: eventos brutos usados nos cálculos;</li>
+<li><code>run.log</code>: trilha integral da execução.</li>
+</ul>
+<p>A validação exige status <code>COMPLETED</code>, todos os chunks concluídos, zero registros rejeitados/ignorados e igualdade entre linhas lidas, envelopes publicados e mensagens publicadas. Esta última igualdade é a evidência principal de uma linha por mensagem; a contagem visível da fila é registrada apenas como aproximada, conforme a semântica do SQS.</p>
+</div></details>
+<details class="doc-section" id="aws-inicial-sec-3" open><summary>Configuração opcional</summary><div class="section-body">
+<pre><code>BENCHMARK_SMOKE_RECORDS_PER_CHUNK=1000 \
+BENCHMARK_FULL_RECORDS_PER_CHUNK=50000 \
+BENCHMARK_WORKER_CONCURRENCY=10 \
+BENCHMARK_WORKER_MEMORY_MB=1024 \
+BENCHMARK_LAMBDA_TIMEOUT=300 \
+BENCHMARK_SQS_VISIBILITY_TIMEOUT=1800 \
+BENCHMARK_PUBLISH_CONCURRENCY=1 \
+BENCHMARK_TIMEOUT_SECONDS=14400 \
+./automacao/benchmark-aws-5m.sh</code></pre>
+<p>O paralelismo de publicação dentro de cada Worker fica em 1 nesta primeira versão; assim, o paralelismo medido vem dos dez ambientes Lambda. CPU é medida no processo Linux via <code>getrusage</code>; memória vem do relatório da própria Lambda.</p>
+</div></details>
+<details class="doc-section" id="aws-inicial-sec-4" open><summary>Resultado da execução inicial</summary><div class="section-body">
+<p>Execução válida: <code>20260908T004045Z</code>, conta <code>851779426177</code>, região <code>us-east-1</code>. Os tempos abaixo são ponta a ponta a partir do início do upload até o estado terminal do ledger. A massa já existia localmente, portanto a geração levou apenas a validação do manifesto.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Medida</th><th scope="col">10 mil</th><th scope="col">5 milhões</th></tr></thead><tbody>
+<tr><td>Tamanho do arquivo</td><td>1.000.000 B</td><td>500.000.000 B</td></tr>
+<tr><td>Upload S3</td><td>2,281 s</td><td>49,131 s</td></tr>
+<tr><td>Tempo ponta a ponta</td><td>11,501 s</td><td>732,238 s</td></tr>
+<tr><td>Vazão ponta a ponta</td><td>869,49 msg/s</td><td>6.828,38 msg/s</td></tr>
+<tr><td>Chunks concluídos</td><td>10/10</td><td>100/100</td></tr>
+<tr><td>Linhas lidas</td><td>10.000</td><td>5.000.000</td></tr>
+<tr><td>Envelopes publicados</td><td>10.000</td><td>5.000.000</td></tr>
+<tr><td>Mensagens físicas publicadas</td><td>10.000</td><td>5.000.000</td></tr>
+<tr><td>Mensagens visíveis aproximadas no SQS</td><td>10.000</td><td>5.000.000</td></tr>
+<tr><td>Registros rejeitados/ignorados</td><td>0/0</td><td>0/0</td></tr>
+<tr><td>DLQs de intake/chunks</td><td>0/0</td><td>0/0</td></tr>
+</tbody></table></div>
+<h3>Configuração efetivamente medida</h3>
+<ul>
+<li>Worker: <code>f2e-e2e-development-example-text-worker</code>;</li>
+<li>runtime/arquitetura: <code>provided.al2023</code>, <code>x86_64</code>;</li>
+<li>memória: 1.024 MB; armazenamento temporário: 512 MB;</li>
+<li>timeout observado no artefato desta execução: 60 s;</li>
+<li>concorrência reservada: nenhuma; teto do event-source mapping: 10;</li>
+<li>batch do mapping: 1 chunk por invocação;</li>
+<li>concorrência de publicação dentro de cada Worker: 1;</li>
+<li>saída: <code>single</code>, um envelope por mensagem física; chamadas em lotes de até dez mensagens via <code>SendMessageBatch</code>.</li>
+</ul>
+<p>O máximo nativo de <code>ConcurrentExecutions</code> foi <strong>10</strong>. O CloudWatch registrou zero <code>Errors</code> e zero <code>Throttles</code>. Os logs estruturados registraram exatamente 10 invocações no smoke e 100 no caso completo; a soma nativa de invocações do caso completo retornou 98 porque duas amostras ficaram fora dos buckets de um minuto delimitados pelo intervalo da consulta.</p>
+<h3>CPU e memória do Worker</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Medida</th><th scope="col">10 mil</th><th scope="col">5 milhões</th></tr></thead><tbody>
+<tr><td>Invocações amostradas</td><td>10</td><td>100</td></tr>
+<tr><td>CPU média por tempo de parede</td><td>14,76%</td><td>10,82%</td></tr>
+<tr><td>CPU p95</td><td>17,77%</td><td>11,86%</td></tr>
+<tr><td>CPU pico</td><td>18,89%</td><td>12,34%</td></tr>
+<tr><td>Memória máxima média</td><td>43,5 MB</td><td>44,73 MB</td></tr>
+<tr><td>Memória p95/pico</td><td>44/44 MB</td><td>46/46 MB</td></tr>
+<tr><td>Duração média da invocação</td><td>1.499,23 ms</td><td>55.145,67 ms</td></tr>
+<tr><td>Duração máxima da invocação</td><td>1.564,78 ms</td><td>58.874,49 ms</td></tr>
+<tr><td>Duração faturada acumulada</td><td>16.077 ms</td><td>5.514.890 ms</td></tr>
+</tbody></table></div>
+<p>A CPU é o tempo de processo (<code>getrusage</code>) dividido pelo tempo de parede de cada invocação; não é uma métrica nativa de utilização da Lambda. A memória é a métrica <code>maxMemoryUsedMB</code> dos eventos nativos <code>platform.report</code>.</p>
+<h3>Conclusões e oportunidades</h3>
+<p>A cardinalidade foi preservada no pior cenário de envelope: para 5 milhões de linhas, o ledger confirmou 5 milhões de envelopes e 5 milhões de mensagens físicas. A fila também convergiu para a estimativa de 5 milhões e nenhuma DLQ recebeu mensagens.</p>
+<p>O Worker usou no pico 46 MB, apenas 4,5% dos 1.024 MB configurados. CPU também ficou baixa, coerente com uma carga dominada pelas chamadas de rede ao SQS. Há forte oportunidade de testar 512 MB e 256 MB, comparando duração e custo, pois reduzir memória também reduz CPU disponível na Lambda. Não é seguro concluir a configuração ótima usando somente este ponto.</p>
+<p>Com chunks de 50 mil, a maior invocação levou 58,874 s e ficou perigosamente próxima do timeout de 60 s observado. O harness foi endurecido depois da medição para aplicar explicitamente timeout de 300 s e visibilidade SQS de 1.800 s por um var-file de maior precedência. Alternativamente, um próximo cenário pode reduzir os chunks para 40 mil registros e manter timeout menor.</p>
+<p>Durante a preparação, 5.000 chunks de 1.000 linhas fizeram o Organizer exceder 60 s realizando buscas de fronteira no S3. O perfil final de 100 chunks removeu esse gargalo e ainda sustentou dez Workers. Também foi necessário corrigir a conclusão concorrente do ledger: conflitos transacionais agora recebem backoff e um token novo somente após cancelamento explícito, mantendo idempotência nos retries de transporte.</p>
+</div></details></div></article></details>
+<details class="report"><summary>Local · 5 milhões</summary><article id="local" class="benchmark-report"><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h3>Local · 5 milhões</h3><a class="source-link" href="benchmark/benchmark-local-5m.md">Abrir Markdown original ↗</a></div><div class="document-content"><p>Este teste de carga é intencionalmente apartado da suíte funcional. Ele não é descoberto por <code>go test ./...</code> nem pelo Godog e somente roda quando chamado de forma explícita.</p>
+<pre><code>./automacao/benchmark-local-5m.sh</code></pre>
+<p>O harness:</p>
+<ul>
+<li>gera, em streaming, 5.000.000 linhas de exatamente 100 bytes (incluindo LF), totalizando 500.000.000 bytes;</li>
+<li>recria o LocalStack descartável e usa o prefixo exclusivo <code>benchmark-text/</code>;</li>
+<li>mede geração, provisionamento, upload e processamento;</li>
+<li>valida no ledger a leitura/publicação de todos os registros, todos os chunks concluídos e ausência de DLQ;</li>
+<li>amostra CPU, memória, rede, disco e PIDs dos containers em <code>docker-resources.csv</code>;</li>
+<li>grava <code>report.json</code> e <code>run.log</code> em <code>automacao/resultados/benchmark-local-5m/&lt;run-id&gt;/</code>.</li>
+</ul>
+<p>Por padrão o benchmark usa bundles de até 100 envelopes e 24.000 bytes. O teto de bytes deixa margem para que dez bundles continuem abaixo do limite agregado de 256 KiB de uma chamada <code>SendMessageBatch</code>. Isso mantém 5 milhões de eventos lógicos, mas reduz radicalmente a quantidade de mensagens físicas no SQS/LocalStack. Para comparar com a topologia de uma mensagem por evento:</p>
+<pre><code>BENCHMARK_OUTPUT_MODE=single ./automacao/benchmark-local-5m.sh</code></pre>
+<p>Esse perfil pode exigir muitas dezenas de GiB de armazenamento temporário no LocalStack. Os principais parâmetros podem ser variados sem editar o script:</p>
+<pre><code>BENCHMARK_RECORDS_PER_CHUNK=25000 \
+BENCHMARK_PUBLISH_CONCURRENCY=4 \
+BENCHMARK_MAX_ENVELOPES_PER_MESSAGE=50 \
+BENCHMARK_MAX_MESSAGE_BYTES=24000 \
+./automacao/benchmark-local-5m.sh</code></pre>
+<p>Para um ensaio rápido do próprio harness, use por exemplo <code>BENCHMARK_RECORDS=10000</code>. A massa é reutilizada apenas quando o manifesto confirma quantidade, largura e tamanho esperados.</p>
+<p>Para executar a matriz local apartada de memória × CPU, com smoke de 10 mil linhas seguido de 5 milhões por perfil, consulte <a href="#local-matriz">Benchmark local — matriz memória × CPU</a>.</p></div></article></details>
+<details class="report"><summary>Local · matriz de memória</summary><article id="local-matriz" class="benchmark-report"><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h3>Local · matriz de memória</h3><a class="source-link" href="benchmark/benchmark-local-memory-matrix.md">Abrir Markdown original ↗</a></div><div class="document-content"><p>Esta automação é deliberadamente separada de <code>go test</code>, Godog e da suíte E2E oficial. Ela executa, para cada perfil, primeiro um smoke de 10.000 linhas e somente executa a carga completa de 5.000.000 de linhas se o smoke concluir com todas as validações do ledger e das DLQs.</p>
+<pre><code>./automacao/benchmark-local-memory-matrix.sh</code></pre>
+<p>A matriz padrão aproxima a CPU proporcional da AWS Lambda: 128/256/512/1.024 MiB com 0,07/0,14/0,29/0,58 vCPU. O <code>benchmark-local-5m.sh</code> pré-aquece o container Lambda do LocalStack e aplica <code>docker update --cpus</code> e <code>--memory</code> ao container do Worker; qualquer novo container Lambda é detectado durante a carga e recebe os mesmos limites. O arquivo <code>worker-container-limits.csv</code> prova os limites aplicados.</p>
+<p>Por padrão, os bundles usam o teto de 250 KiB, sem teto por quantidade de envelopes. A implementação incremental do packer torna essa configuração viável para medir publicação, em vez de reserializar o bundle crescente. O timeout de execução do Worker é 600 segundos (10 minutos); o prazo global de cada carga completa permanece em até duas horas.</p>
+<p>Os resultados ficam em <code>automacao/resultados/benchmark-local-memory-matrix/&lt;run-id&gt;/</code>, com um <code>report.json</code> por etapa e <code>summary.json</code> consolidado.</p>
+<details class="doc-section" id="local-matriz-sec-1" open><summary>Personalização</summary><div class="section-body">
+<pre><code>BENCHMARK_LOCAL_MEMORY_CPU_MATRIX=&#x27;256:0.14 512:0.29&#x27; \
+BENCHMARK_LOCAL_PUBLISH_CONCURRENCY=4 \
+BENCHMARK_LOCAL_RECORDS_PER_CHUNK=50000 \
+./automacao/benchmark-local-memory-matrix.sh</code></pre>
+<p>O Docker Desktop é um simulador local: <code>--cpus</code> é uma quota rígida de cgroup, enquanto a Lambda atribui CPU proporcionalmente à memória. Logo, a matriz é adequada para comparar regressões e tendências relativas; a decisão de produção continua exigindo validação na AWS.</p>
+</div></details></div></article></details>
+<details class="report"><summary>Histórico · investigação P3</summary><article id="p3" class="benchmark-report"><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><h3>Histórico · investigação P3</h3><a class="source-link" href="benchmark/p3-right-sizing-memoria.md">Abrir Markdown original ↗</a></div><div class="document-content"><details class="doc-section" id="p3-sec-1" open><summary>Resultado</summary><div class="section-body">
+<p>A matriz foi implantada e executada na AWS em 8 de setembro de 2026. Nenhuma das memórias avaliadas — 128, 256, 512 ou 1.024 MiB — é elegível para promoção com a configuração atual de chunks de aproximadamente 5 MiB, publicação interna serial e timeout de 60 segundos.</p>
+<p>O limitante observado não é falta de memória. No ensaio de capacidade com 1.024 MiB, o maior consumo foi 64 MB, mas as nove invocações do Worker terminaram por timeout aos 60.000 ms. A decisão do P3.10 fica, portanto, bloqueada até que o trabalho por invocação ou o caminho de publicação seja reduzido. A configuração de memória existente não foi alterada.</p>
+</div></details>
+<details class="doc-section" id="p3-sec-2" open><summary>Ambiente e método</summary><div class="section-body">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Parâmetro</th><th scope="col">Valor</th></tr></thead><tbody>
+<tr><td>Conta AWS</td><td><code>851779426177</code></td></tr>
+<tr><td>Região</td><td><code>us-east-1</code></td></tr>
+<tr><td>Runtime / arquitetura</td><td><code>provided.al2023</code> / <code>x86_64</code></td></tr>
+<tr><td>Memórias</td><td>128, 256, 512 e 1.024 MiB</td></tr>
+<tr><td>Timeout do Worker</td><td>60 s</td></tr>
+<tr><td>Concorrência máxima de Workers</td><td>10</td></tr>
+<tr><td>Concorrência de publicação por Worker</td><td>1</td></tr>
+<tr><td>Modo de saída</td><td>Uma mensagem SQS por linha</td></tr>
+<tr><td>Lote da API SQS</td><td>10 mensagens</td></tr>
+<tr><td>Tamanho alvo do chunk</td><td>5 MiB (<code>5.242.880</code> bytes)</td></tr>
+<tr><td>Massa de capacidade</td><td>500.000 linhas de 100 bytes; 9 chunks</td></tr>
+<tr><td>Margem operacional de elegibilidade</td><td>p99 de até 48 s</td></tr>
+</tbody></table></div>
+<p>O harness executa primeiro uma massa smoke de 10.000 linhas e projeta seu p99 para o tamanho nominal de 5 MiB. Uma projeção acima do timeout absoluto de 60 segundos é registrada como <code>PREFLIGHT_REJECTED</code>, evitando iniciar uma carga que já se mostrou incompatível com o timeout. Os pontos que passaram pelo preflight foram então exercitados com 500.000 linhas.</p>
+</div></details>
+<details class="doc-section" id="p3-sec-3" open><summary>Resultados do smoke e do preflight</summary><div class="section-body">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Memória</th><th scope="col">Repetições smoke</th><th scope="col">p99 mediano</th><th scope="col">Faixa do p99</th><th scope="col">Projeção mediana para 5 MiB</th><th scope="col">Pico de memória</th><th scope="col">Init mediano</th><th scope="col">CPU mediana¹</th><th scope="col">Ciclos GC medianos</th><th scope="col">Pausa GC mediana</th><th scope="col">Decisão do preflight</th></tr></thead><tbody>
+<tr><td>128 MiB</td><td>3</td><td>19.911 ms</td><td>19.808–20.833 ms</td><td>104.392 ms</td><td>46 MB</td><td>138,260 ms</td><td>6,93%</td><td>72</td><td>371,458 ms</td><td>Rejeitado nas 3 repetições</td></tr>
+<tr><td>256 MiB</td><td>3</td><td>12.236 ms</td><td>12.182–12.825 ms</td><td>64.149 ms</td><td>45 MB</td><td>138,426 ms</td><td>11,38%</td><td>75</td><td>42,721 ms</td><td>Rejeitado nas 3 repetições</td></tr>
+<tr><td>512 MiB</td><td>2</td><td>8.914–11.802 ms²</td><td>8.914–11.802 ms</td><td>46.733–61.878 ms</td><td>45 MB</td><td>131,759–134,844 ms</td><td>12,79%³</td><td>75–77</td><td>21,219–26,689 ms</td><td>Uma rejeição; uma aprovação</td></tr>
+<tr><td>1.024 MiB</td><td>1</td><td>10.013 ms</td><td>10.013 ms</td><td>52.495 ms</td><td>45 MB</td><td>134,317 ms</td><td>12,49%</td><td>75</td><td>10,038 ms</td><td>Aprovado</td></tr>
+</tbody></table></div>
+<p>¹ A métrica é tempo de CPU do processo dividido pelo tempo de parede; ela não representa diretamente a porcentagem da vCPU provisionada pela Lambda.</p>
+<p>² Com duas amostras, a faixa é apresentada em vez de atribuir uma mediana estatisticamente significativa.</p>
+<p>³ Valor da repetição de 512 MiB que passou pelo preflight; a outra repetição registrou telemetria compatível, sem mudar a conclusão.</p>
+</div></details>
+<details class="doc-section" id="p3-sec-4" open><summary>Ensaios de capacidade</summary><div class="section-body">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Memória</th><th scope="col">Execuções iniciadas</th><th scope="col">Chunks reconhecidos pelo ledger</th><th scope="col">Mensagens físicas observadas na saída</th><th scope="col">Evidência do Worker</th><th scope="col">Resultado</th></tr></thead><tbody>
+<tr><td>512 MiB</td><td>1</td><td>1 de 9; 55.555 de 500.000 registros</td><td>494.765</td><td>O job permaneceu incompleto após 137 s</td><td>Falhou; execução interrompida após confirmar ausência de progresso confiável</td></tr>
+<tr><td>1.024 MiB</td><td>1</td><td>0 de 9; 0 de 500.000 registros</td><td>477.780</td><td>9 de 9 invocações de capacidade em timeout exato de 60.000 ms; pico de 64 MB</td><td>Falhou deterministicamente por timeout</td></tr>
+</tbody></table></div>
+<p>As contagens físicas da fila de saída muito superiores aos registros confirmados no ledger mostram publicação parcial antes do timeout. Além de invalidar o benchmark, isso cria risco de reprocessamento e duplicidade: a invocação publica parte do chunk, expira sem confirmá-lo e pode ser repetida pelo event source mapping.</p>
+<p>As três execuções completas por ponto previstas no plano não foram forçadas. 128 e 256 MiB foram rejeitados em três preflights cada; 512 MiB falhou na primeira carga que passou pelo preflight; e a própria configuração de 1.024 MiB falhou nas nove invocações da primeira carga. Repetir cargas conhecidamente inválidas só ampliaria timeouts, retries, mensagens parciais e custo, sem criar uma configuração elegível.</p>
+</div></details>
+<details class="doc-section" id="p3-sec-5" open><summary>Teste adicional — bundle máximo em 128 MiB</summary><div class="section-body">
+<p>Em 8 de setembro de 2026 foi executado um teste isolado para verificar se o gargalo anterior era causado principalmente pela quantidade de mensagens físicas enviadas ao SQS. O Worker foi configurado para preencher cada bundle até o limite de bytes da aplicação:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Parâmetro</th><th scope="col">Valor</th></tr></thead><tbody>
+<tr><td>Execução</td><td><code>20260908T115738Z</code></td></tr>
+<tr><td>Memória / timeout</td><td>128 MiB / 60 s</td></tr>
+<tr><td><code>outputMode</code></td><td><code>bundle</code></td></tr>
+<tr><td><code>maxEnvelopesPerMessage</code></td><td><code>0</code> — sem teto por quantidade</td></tr>
+<tr><td><code>maxMessageBytes</code></td><td>256.000 bytes — 250 KiB</td></tr>
+<tr><td>Publicação por Worker</td><td>Concorrência 1; até 10 mensagens por chamada SQS</td></tr>
+<tr><td>Smoke</td><td>10.000 registros de 100 bytes em um chunk</td></tr>
+<tr><td>Massa pretendida após o smoke</td><td>5 milhões de registros</td></tr>
+</tbody></table></div>
+<p>O empacotador considera o body JSON e os atributos da mensagem e só fecha o bundle antes de ultrapassar 256.000 bytes. Portanto, a configuração solicitou o máximo de registros que coubesse em cada mensagem, sem impor limite de quantidade.</p>
+<h3>Resultado observado</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela do documento"><table><thead><tr><th scope="col">Métrica</th><th scope="col">Bundle máximo</th><th scope="col">Baseline 128 MiB, uma mensagem por registro</th></tr></thead><tbody>
+<tr><td>Resultado do smoke de 10 mil</td><td>Timeout</td><td>Concluído</td></tr>
+<tr><td>Duração do Worker</td><td>60.000 ms</td><td>p99 mediano de 19.911 ms</td></tr>
+<tr><td>Memória máxima</td><td>76 MB</td><td>46 MB</td></tr>
+<tr><td>Init duration</td><td>151,270 ms</td><td>mediana de 138,260 ms</td></tr>
+<tr><td>Registros confirmados</td><td>0 de 10.000</td><td>10.000 de 10.000</td></tr>
+<tr><td>Mensagens físicas na saída</td><td>0</td><td>10.000</td></tr>
+</tbody></table></div>
+<p>A invocação expirou antes de publicar o primeiro bundle. O job continuava em <code>SCHEDULED</code>, com <code>0/1</code> chunk concluído, após 120 segundos. O fluxo foi interrompido nesse ponto para evitar retries; por isso, a massa de 5 milhões não foi iniciada e não existe medição de throughput válida para ela.</p>
+<p>O teste refuta a hipótese de que apenas reduzir a quantidade de chamadas ou mensagens SQS resolveria o desempenho em 128 MiB com a implementação atual. Por inspeção do código, a causa provável é o custo do próprio empacotador: cada registro acrescentado chama <code>fits</code>, que serializa novamente todo o bundle crescente, e <code>messageSize</code> recalcula o <code>bundleId</code>, ordenando e concatenando os IDs. Esse trabalho repetido cresce de forma não linear e acontece antes do primeiro envio, o que é compatível com a fila de saída vazia observada.</p>
+<p>Para testar o ganho potencial do SQS de forma justa, o próximo passo é tornar o cálculo de tamanho incremental e calcular o <code>bundleId</code> apenas no fechamento do bundle. Depois dessa otimização, deve-se repetir primeiro o smoke de 10 mil e, somente se ele ficar abaixo da margem de 48 segundos, executar os 5 milhões.</p>
+<p>Os artefatos brutos desta tentativa estão em <code>automacao/resultados/benchmark-p3-memory/bundle-128-20260908T115738Z/</code>. O registro nativo <code>platform.report</code> confirma <code>status=timeout</code>, 60.152 ms faturados e 76 MB de memória máxima; a fila de saída permaneceu vazia.</p>
+</div></details>
+<details class="doc-section" id="p3-sec-6" open><summary>Decisão</summary><div class="section-body">
+<ul>
+<li>Não promover 128, 256 ou 512 MiB.</li>
+<li>Não declarar 1.024 MiB como configuração validada: ela também não concluiu a massa de capacidade.</li>
+<li>Não comparar custo monetário entre candidatos, pois nenhum passou pelo gate de estabilidade e as cargas de capacidade foram interrompidas. Um custo calculado sobre execuções parciais seria enganoso.</li>
+<li>Corrigir primeiro a duração por chunk, priorizando o paralelismo/overhead de publicação e a atomicidade ou idempotência diante de timeout. Depois disso, repetir esta mesma matriz e somente então selecionar a memória por custo/latência.</li>
+</ul>
+</div></details>
+<details class="doc-section" id="p3-sec-7" open><summary>Artefatos e reprodutibilidade</summary><div class="section-body">
+<p>O harness está em <a href="../automacao/benchmark-p3-memory.sh"> 0 </a> e usa <a href="../automacao/benchmark-aws-5m.sh"> 1 </a>. Os dados brutos locais das rodadas estão em:</p>
+<ul>
+<li><code>automacao/resultados/benchmark-p3-memory/20260908T105638Z/</code> — 128, 256 e 512 MiB;</li>
+<li><code>automacao/resultados/benchmark-p3-memory/20260908T113127Z/</code> — 1.024 MiB.</li>
+</ul>
+<p>O Worker também passou a registrar ciclos e pausas de GC, heap e <code>GOMAXPROCS</code> por invocação. O harness coleta duração p95/p99, init, CPU, memória, GC, erros, throttles e DLQs, e interrompe cedo se detectar a DLQ de chunks.</p>
+<p>Após os ensaios, o fluxo foi encerrado com <code>terraform destroy</code>: 107 recursos foram destruídos, o estado Terraform ficou com zero recursos e não restaram funções Lambda do ambiente de benchmark. Os logs locais de limpeza são <code>.build/p3-destroy-512.log</code>, <code>.build/p3-destroy-1024.log</code> e <code>.build/p3-destroy-128-bundle.log</code>.</p>
+</div></details></div></article></details>
+</section>
+<noscript><div class="note">Ative JavaScript para navegar pelo portal interativo. Os documentos originais estão disponíveis em <a href="requisitos_e_restricoes.md">requisitos</a>, <a href="arquitetura.md">arquitetura</a>, <a href="blueprint_arquitetural.md">blueprint</a> e <a href="benchmark/benchmark-aws-memory-matrix.md">benchmarks AWS</a>.</div></noscript>
+<footer><span>F2E <b>/</b> File-to-Events</span><span>Documentação do repositório · leitura offline</span><a href="#inicio">Voltar ao início ↑</a></footer>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Documentação interativa do F2E: requisitos, arquitetura, blueprint e resultados de benchmarks.">
+<title>F2E · Documentação técnica</title>
+<link rel="stylesheet" href="site/site.css">
+<script id="benchmark-data" type="application/json">{{DATA}}</script>
+<script src="site/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<aside class="sidebar">
+<a class="brand" href="#inicio"><span class="brand-icon">f→e</span><span>F2E<small>FILE TO EVENTS</small></span></a>
+<p class="nav-label">EXPLORAR DOCUMENTAÇÃO</p>
+<nav aria-label="Navegação principal">
+<a href="#inicio" aria-current="page"><span>01</span> Visão geral</a>
+<a href="#requisitos"><span>02</span> Requisitos e restrições</a>
+<a href="#arquitetura"><span>03</span> Arquitetura</a>
+<a href="#blueprint"><span>04</span> Blueprint arquitetural</a>
+<a href="#benchmarks"><span>05</span> Benchmarks <i>4</i></a>
+</nav>
+<div class="sidebar-bottom"><span class="status-dot"></span> Prova de conceito<p>Go · AWS · Event-driven</p><a href="../README.md">Repositório / README ↗</a></div>
+</aside>
+<div class="workspace">
+<header class="topbar"><span>Engenharia <b>/</b> Base de conhecimento</span><div class="search-box"><span aria-hidden="true">⌕</span><label class="sr-only" for="search">Buscar em toda a documentação</label><input id="search" type="search" placeholder="Buscar na documentação…"><kbd>/</kbd></div></header>
+<main id="conteudo" tabindex="-1">
+<section id="search-results" hidden aria-labelledby="search-title"><p class="eyebrow">BUSCA GLOBAL</p><h1 id="search-title">Resultados na documentação</h1><p id="search-count" role="status"></p><div id="search-list"></div></section>
+<section id="inicio" class="page">
+<div class="hero"><div><p class="eyebrow"><span class="status-dot"></span> DOCUMENTAÇÃO TÉCNICA / F2E</p><h1>De arquivos a eventos.<br><span>Do desenho à evidência.</span></h1><p class="lead">Explore os contratos, as decisões de arquitetura e as medições do File-to-Events — o fluxo de ingestão que conecta arquivos no S3 a consumidores no SQS.</p><div class="hero-actions"><a class="button primary" href="#arquitetura">Explorar arquitetura <span>↗</span></a><a class="button" href="#benchmarks">Ver benchmarks <span>→</span></a></div></div><div class="hero-art" aria-hidden="true"><div class="art-caption">FILE → CHUNKS → EVENTS</div><div class="file-glyph">≡<small>arquivo S3</small></div><div class="art-lines">↘<br>→<br>↗</div><div class="event-stack"><span>01 <b>evento</b> ↗</span><span>02 <b>evento</b> ↗</span><span>03 <b>evento</b> ↗</span></div><div class="art-footer"><span class="status-dot"></span> Processamento em paralelo</div></div></div>
+<div class="stats"><div><span>VOLUME VALIDADO NA MATRIZ AWS</span><strong>5 milhões</strong><small>de registros por perfil</small></div><div><span>MENOR TEMPO OBSERVADO</span><strong>66,76 <em>s</em></strong><small>AWS · bundle · 1.024 MiB</small></div><div><span>MODELOS DE ENTRADA</span><strong>3 formatos</strong><small>text · json · multi-line</small></div></div>
+<div class="section-heading"><div><p class="eyebrow">MAPA DA DOCUMENTAÇÃO</p><h2>Entenda. Explore. Valide.</h2></div><span>Quatro perspectivas do mesmo sistema</span></div>
+<div class="topic-grid">
+<a class="topic" href="#requisitos"><span class="topic-number">01 / CONTRATO</span><h3>Requisitos e restrições <span>↗</span></h3><p>Escopo, elegibilidade de arquivos, limites de entrega e critérios de adoção.</p><small>O que o F2E garante →</small></a>
+<a class="topic" href="#arquitetura"><span class="topic-number">02 / TOPOLOGIA</span><h3>Arquitetura <span>↗</span></h3><p>Explore o caminho dos dados e as responsabilidades de cada componente.</p><small>Como os componentes se conectam →</small></a>
+<a class="topic" href="#blueprint"><span class="topic-number">03 / DECISÕES</span><h3>Blueprint arquitetural <span>↗</span></h3><p>Paralelismo, idempotência, outbox, recuperação e escolhas de implementação.</p><small>Por que o sistema funciona assim →</small></a>
+<a class="topic" href="#benchmarks"><span class="topic-number">04 / EVIDÊNCIAS</span><h3>Resultados dos benchmarks <span>↗</span></h3><p>Compare perfis AWS e consulte execuções locais e investigações anteriores.</p><small>O que foi efetivamente medido →</small></a>
+</div>
+<div class="note"><strong>Contexto de adoção</strong><p>O F2E é uma prova de conceito. A matriz AWS mede uma carga específica; capacidade, SLOs e operação devem ser validados para cada uso. A entrega é at-least-once e não há ordenação global.</p></div>
+<p class="muted provenance">Destaques: <a href="#aws-matriz">matriz AWS de 09/09/2026</a> · execução <code>20260909T123015Z</code>.</p>
+</section>
+{{DOCUMENTS}}
+<section id="benchmarks" class="page" hidden>
+<p class="eyebrow">EVIDÊNCIAS / DESEMPENHO</p><h1>Resultados dos benchmarks</h1><p class="lead">Medições reais, com o contexto de cada execução. Registros lógicos e mensagens físicas são unidades distintas no modo bundle.</p>
+<div class="tabs" role="tablist" aria-label="Ambiente de benchmark"><button id="tab-aws" role="tab" aria-selected="true" aria-controls="bench-aws" data-bench="aws">Matriz AWS</button><button id="tab-local" role="tab" aria-selected="false" aria-controls="bench-local" tabindex="-1" data-bench="local">LocalStack</button><button id="tab-historico" role="tab" aria-selected="false" aria-controls="bench-historico" tabindex="-1" data-bench="historico">Histórico AWS</button></div>
+<div id="bench-aws" role="tabpanel" aria-labelledby="tab-aws">
+<div class="benchmark-intro"><span class="badge">4 perfis concluídos</span><span>09 set 2026 · 5.000.000 de registros · 10 Workers</span></div>
+<div class="chart-card"><div class="section-heading"><div><p class="eyebrow">MEMÓRIA × DESEMPENHO</p><h2 id="chart-title">Tempo ponta a ponta</h2></div><label class="metric-control">Métrica<select id="metric"><option value="seconds">Tempo ponta a ponta (s)</option><option value="throughput">Vazão do fluxo (registros/s)</option><option value="worker">Capacidade por Worker (registros/s)</option></select></label></div><p id="chart-hint" class="muted"></p><div id="chart" aria-label="Comparação de quatro perfis de memória"></div><p class="chart-foot">Selecione uma barra para inspecionar o perfil. Valores observados na carga completa.</p></div>
+<div id="profile-detail" class="profile-detail" aria-live="polite"></div>
+<div class="table-wrap"><table><caption>Resultados completos · matriz AWS em bundle</caption><thead><tr><th scope="col">Memória</th><th scope="col">Smoke 10 mil</th><th scope="col">5 milhões</th><th scope="col">Vazão do fluxo</th><th scope="col">Por Worker</th><th scope="col">Throttles</th></tr></thead><tbody id="aws-rows"></tbody></table></div>
+<div class="note"><strong>Como interpretar</strong><p>80 chunks de 62.500 linhas de 100 bytes; publicação interna com concorrência 8; bundles de até 250 KiB, cerca de 302 registros por mensagem; timeout de 600 s. As quatro cargas concluíram sem erros, rejeições ou DLQs. Houve um throttling em 128 MiB.</p><p>A capacidade por Worker usa a duração média da invocação; não equivale à vazão do fluxo. As projeções ideais do relatório não incluem orquestração e não são usadas no gráfico. Estes dados não determinam, isoladamente, o menor custo.</p></div>
+<p class="provenance">Fonte versionada: <a href="#aws-matriz">relatório da matriz AWS</a>. O JSON bruto citado pelo relatório não está presente neste checkout.</p>
+</div>
+<div id="bench-local" role="tabpanel" aria-labelledby="tab-local" hidden>
+<div class="benchmark-intro"><span class="badge">Execução completa</span><span>07 set 2026 · LocalStack · bundles de até 24.000 bytes / 100 envelopes</span></div>
+<div class="stats"><div><span>TEMPO DE PROCESSAMENTO</span><strong>197,790 <em>s</em></strong><small>upload: 3,785 s, separado</small></div><div><span>VAZÃO DE PROCESSAMENTO</span><strong>25.279,34</strong><small>registros/s</small></div><div><span>MENSAGENS FÍSICAS</span><strong>178.539</strong><small>5 milhões de registros publicados</small></div></div>
+<p>100/100 chunks concluídos, zero registros rejeitados ou ignorados e DLQs de intake e chunks vazias. Máquina: Intel Core i7-13700H, 20 threads; Docker Desktop com 20 CPUs e aproximadamente 15,4 GiB de RAM.</p>
+<p class="provenance">Evidência preservada: <a href="site/dados/local-5m-20260907T211528Z.json">report.json · 20260907T211528Z ↗</a></p>
+<h2>Matriz local de memória × CPU</h2><p>Execução <code>20260908T234320Z</code>. Todos os smokes de 10 mil concluíram. As cargas completas disponíveis falharam; não representam uma medição válida de vazão para 5 milhões.</p>
+<div class="table-wrap"><table><caption>Cargas completas · 5 milhões de registros esperados</caption><thead><tr><th scope="col">Memória / vCPU</th><th scope="col">Situação</th><th scope="col">Chunks</th><th scope="col">Registros confirmados</th><th scope="col">DLQ intake / chunks</th></tr></thead><tbody id="local-rows"></tbody></table></div>
+<div class="note"><strong>Limite da comparação</strong><p>As quotas rígidas de CPU do Docker não reproduzem a alocação proporcional da Lambda. O tempo de processamento local também não tem o mesmo escopo do tempo ponta a ponta AWS. Não compare diretamente esses números para dimensionar produção.</p></div><p class="provenance">Evidência preservada: <a href="site/dados/matriz-local-20260908T234320Z.json">summary.json local ↗</a>. O perfil de 256 MiB só possui smoke neste consolidado.</p>
+</div>
+<div id="bench-historico" role="tabpanel" aria-labelledby="tab-historico" hidden>
+<div class="history-card"><span class="badge">Concluído · 08 set 2026</span><h2>Baseline AWS: uma mensagem por registro</h2><p class="big-number">732,238 <span>s ponta a ponta</span></p><p>5 milhões de registros e de mensagens físicas · 6.828,38 mensagens/s · 100/100 chunks · 1.024 MB · até 10 Workers · publicação interna serial · zero erros, throttles e DLQs.</p><p>Memória pico: 46 MB. A invocação mais longa durou 58,874 s, próxima do timeout de 60 s observado. O harness foi ajustado posteriormente; a medição original conserva esse contexto.</p><a href="#aws-inicial">Abrir relatório completo →</a></div>
+<div class="history-card"><span class="badge warning">Não elegível · 08 set 2026</span><h2>P3: investigação de memória e timeout</h2><p>128 e 256 MiB foram rejeitados no preflight. As cargas de capacidade em 512 e 1.024 MiB não concluíram; em 1.024 MiB, 9/9 invocações expiraram aos 60 s, com pico de apenas 64 MB.</p><p>Um teste adicional de bundle em 128 MiB expirou ainda no smoke, antes de publicar mensagens. A massa de 5 milhões não foi iniciada. A matriz concluída de 09/09 usa outra configuração e o empacotador incremental.</p><a href="#p3">Abrir investigação completa →</a></div>
+<div class="note"><strong>Configurações diferentes</strong><p>Baseline single, investigação P3 e matriz bundle possuem tamanhos de chunk, concorrência de publicação e timeouts diferentes. A variação entre essas execuções não pode ser atribuída somente à memória.</p></div>
+</div>
+<div class="section-heading reports-heading"><div><p class="eyebrow">FONTES E REPRODUTIBILIDADE</p><h2>Relatórios completos</h2></div><button class="button" id="download-csv">Baixar matriz AWS · CSV ↓</button></div>
+{{REPORTS}}
+</section>
+<noscript><div class="note">Ative JavaScript para navegar pelo portal interativo. Os documentos originais estão disponíveis em <a href="requisitos_e_restricoes.md">requisitos</a>, <a href="arquitetura.md">arquitetura</a>, <a href="blueprint_arquitetural.md">blueprint</a> e <a href="benchmark/benchmark-aws-memory-matrix.md">benchmarks AWS</a>.</div></noscript>
+<footer><span>F2E <b>/</b> File-to-Events</span><span>Documentação do repositório · leitura offline</span><a href="#inicio">Voltar ao início ↑</a></footer>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,14 @@
+<div class="architecture-map">
+<div class="section-heading"><div><p class="eyebrow">FLUXO INTERATIVO</p><h2>O caminho de um arquivo</h2></div><span>Clique em um componente</span></div>
+<div class="flow" aria-label="Caminho principal do processamento">
+<button data-node="s3" aria-pressed="true"><small>01 / ORIGEM</small><strong>Amazon S3</strong><span>Arquivo de entrada</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="intake" aria-pressed="false"><small>02 / ENTRADA</small><strong>file-intake</strong><span>Fila SQS</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="organizer" aria-pressed="false"><small>03 / PLANEJAMENTO</small><strong>Organizer</strong><span>Lambda</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="chunks" aria-pressed="false"><small>04 / TRABALHO</small><strong>chunk-jobs</strong><span>SQS compartilhada</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="worker" aria-pressed="false"><small>05 / PROCESSAMENTO</small><strong>Worker</strong><span>Lambda compartilhada</span></button><span class="arrow" aria-hidden="true">→</span>
+<button data-node="output" aria-pressed="false"><small>06 / ENTREGA</small><strong>output-events</strong><span>SQS → consumidores</span></button>
+</div>
+<div class="support-flow"><span>CONFIGURAÇÃO, ESTADO E OPERAÇÃO</span><button data-node="ssm" aria-pressed="false">SSM Parameter Store</button><button data-node="ledger" aria-pressed="false">DynamoDB · ledger</button><button data-node="completion" aria-pressed="false">SQS · conclusão</button><button data-node="dlq" aria-pressed="false">DLQs</button><button data-node="observability" aria-pressed="false">CloudWatch</button></div>
+<div id="node-detail" class="node-detail" aria-live="polite"></div>
+<p class="muted">Fluxo principal simplificado. Organizer consulta S3, SSM e ledger; Worker lê S3 Range GET e atualiza o ledger. Uma OrganizerRequest também pode entrar diretamente no intake.</p>
+</div>

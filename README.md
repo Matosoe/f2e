@@ -253,6 +253,8 @@ Todos os limites e opções por arquivo estão documentados em [Contratos versio
 
 ## Documentação
 
+- [Portal interativo — requisitos, arquitetura, blueprint e benchmarks](documentacao/index.html) (abra no navegador; funciona offline)
+
 - [Arquitetura da solução](documentacao/arquitetura.md)
 - [Contratos versionados](documentacao/contratos.md)
 - [JSON Schema do Envelope de Eventos](documentacao/schemas/envelope-v1.schema.json)

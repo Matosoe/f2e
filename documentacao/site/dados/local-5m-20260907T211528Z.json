@@ -1,0 +1,53 @@
+{
+  "runId": "20260907T211528Z",
+  "status": "COMPLETED",
+  "jobId": "626fd8f810e14516cf36b0c2f9a8a0e023c82ed982c2b3626bbbcbb932d6d42c",
+  "objectKey": "benchmark-text/20260907T211528Z-5000000x100.txt",
+  "machine": {
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700H",
+    "physicalCores": 14,
+    "logicalThreads": 20,
+    "ramBytes": 33854128128,
+    "dockerDesktop": {
+      "cpus": 20,
+      "ramBytes": 16519639040
+    }
+  },
+  "input": {
+    "records": 5000000,
+    "recordLengthBytes": 100,
+    "sizeBytes": 500000000,
+    "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"
+  },
+  "parameters": {
+    "recordsPerChunk": 50000,
+    "publishConcurrency": 8,
+    "outputMode": "bundle",
+    "maxEnvelopesPerMessage": 100,
+    "maxMessageBytes": 24000
+  },
+  "durationsMs": {
+    "generation": 58,
+    "provision": 23201,
+    "upload": 3785,
+    "processing": 197790
+  },
+  "result": {
+    "expectedChunks": 100,
+    "completedChunks": 100,
+    "recordsRead": 5000000,
+    "recordsPublished": 5000000,
+    "recordsRejected": 0,
+    "recordsIgnored": 0,
+    "outputMessages": 178539,
+    "intakeDlq": 0,
+    "chunkDlq": 0,
+    "recordsPerSecond": 25279.34,
+    "inputMiBPerSecond": 2.41
+  },
+  "resources": {
+    "peakSingleContainerCpuPercent": 166.30,
+    "peakSingleContainerMemoryPercent": 33.78,
+    "rawSamples": "docker-resources.csv"
+  }
+}

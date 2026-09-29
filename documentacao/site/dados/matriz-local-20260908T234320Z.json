@@ -1,0 +1,329 @@
+{
+  "runId": "20260908T234320Z",
+  "kind": "local-memory-cpu-matrix",
+  "matrix": "128:0.07 256:0.14 512:0.29 1024:0.58",
+  "cases": [
+    {
+      "stage": "smoke",
+      "status": "COMPLETED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 128,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.07",
+        "workerContainerMemory": "128m"
+      },
+      "input": {
+        "records": 10000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 1000000,
+        "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"
+      },
+      "durationsMs": {
+        "generation": 95,
+        "provision": 28664,
+        "upload": 919,
+        "processing": 2555
+      },
+      "result": {
+        "expectedChunks": 1,
+        "completedChunks": 1,
+        "recordsRead": 10000,
+        "recordsPublished": 10000,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 66,
+        "intakeDlq": 0,
+        "chunkDlq": 0,
+        "recordsPerSecond": 3913.89,
+        "inputMiBPerSecond": 0.37
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 99.49,
+        "peakSingleContainerMemoryPercent": 18.99,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    },
+    {
+      "stage": "full",
+      "status": "FAILED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 128,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.07",
+        "workerContainerMemory": "128m"
+      },
+      "input": {
+        "records": 5000000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 500000000,
+        "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"
+      },
+      "durationsMs": {
+        "generation": 66,
+        "provision": 28661,
+        "upload": 9118,
+        "processing": 601316
+      },
+      "result": {
+        "expectedChunks": 95,
+        "completedChunks": 5,
+        "recordsRead": 263155,
+        "recordsPublished": 263155,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 16252,
+        "intakeDlq": 2,
+        "chunkDlq": 0,
+        "recordsPerSecond": 437.63,
+        "inputMiBPerSecond": 0.79
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 220.31,
+        "peakSingleContainerMemoryPercent": 32.42,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    },
+    {
+      "stage": "smoke",
+      "status": "COMPLETED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 256,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.14",
+        "workerContainerMemory": "256m"
+      },
+      "input": {
+        "records": 10000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 1000000,
+        "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"
+      },
+      "durationsMs": {
+        "generation": 85,
+        "provision": 44291,
+        "upload": 1213,
+        "processing": 2526
+      },
+      "result": {
+        "expectedChunks": 1,
+        "completedChunks": 1,
+        "recordsRead": 10000,
+        "recordsPublished": 10000,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 66,
+        "intakeDlq": 0,
+        "chunkDlq": 0,
+        "recordsPerSecond": 3958.83,
+        "inputMiBPerSecond": 0.38
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 84.48,
+        "peakSingleContainerMemoryPercent": 19.67,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    },
+    {
+      "stage": "smoke",
+      "status": "COMPLETED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 512,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.29",
+        "workerContainerMemory": "512m"
+      },
+      "input": {
+        "records": 10000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 1000000,
+        "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"
+      },
+      "durationsMs": {
+        "generation": 84,
+        "provision": 29670,
+        "upload": 1411,
+        "processing": 3014
+      },
+      "result": {
+        "expectedChunks": 1,
+        "completedChunks": 1,
+        "recordsRead": 10000,
+        "recordsPublished": 10000,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 203,
+        "intakeDlq": 0,
+        "chunkDlq": 0,
+        "recordsPerSecond": 3317.85,
+        "inputMiBPerSecond": 0.32
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 301.55,
+        "peakSingleContainerMemoryPercent": 8,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    },
+    {
+      "stage": "full",
+      "status": "FAILED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 512,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.29",
+        "workerContainerMemory": "512m"
+      },
+      "input": {
+        "records": 5000000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 500000000,
+        "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"
+      },
+      "durationsMs": {
+        "generation": 81,
+        "provision": 29470,
+        "upload": 4666,
+        "processing": 282661
+      },
+      "result": {
+        "expectedChunks": 95,
+        "completedChunks": 5,
+        "recordsRead": 263155,
+        "recordsPublished": 263155,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 16155,
+        "intakeDlq": 1,
+        "chunkDlq": 0,
+        "recordsPerSecond": 930.99,
+        "inputMiBPerSecond": 1.69
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 162.55,
+        "peakSingleContainerMemoryPercent": 31.7,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    },
+    {
+      "stage": "smoke",
+      "status": "COMPLETED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 1024,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.58",
+        "workerContainerMemory": "1024m"
+      },
+      "input": {
+        "records": 10000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 1000000,
+        "sha256": "33a607c1c8b396a701991e1d41a20a1f04f7d0831b0ac398d771d2aaedf85709"
+      },
+      "durationsMs": {
+        "generation": 60,
+        "provision": 27550,
+        "upload": 861,
+        "processing": 1800
+      },
+      "result": {
+        "expectedChunks": 1,
+        "completedChunks": 1,
+        "recordsRead": 10000,
+        "recordsPublished": 10000,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 33,
+        "intakeDlq": 0,
+        "chunkDlq": 0,
+        "recordsPerSecond": 5555.56,
+        "inputMiBPerSecond": 0.53
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 106.08,
+        "peakSingleContainerMemoryPercent": 5.32,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    },
+    {
+      "stage": "full",
+      "status": "FAILED",
+      "parameters": {
+        "recordsPerChunk": 50000,
+        "publishConcurrency": 8,
+        "outputMode": "bundle",
+        "maxEnvelopesPerMessage": 0,
+        "maxMessageBytes": 256000,
+        "workerMemoryMB": 1024,
+        "workerTimeoutSeconds": 600,
+        "workerContainerCPUs": "0.58",
+        "workerContainerMemory": "1024m"
+      },
+      "input": {
+        "records": 5000000,
+        "recordLengthBytes": 100,
+        "sizeBytes": 500000000,
+        "sha256": "ea2bc112f5f92e5417c7077fb8a00bdd95f2922801a2281ebea5fc4e4ac8a8de"
+      },
+      "durationsMs": {
+        "generation": 56,
+        "provision": 23420,
+        "upload": 4620,
+        "processing": 194766
+      },
+      "result": {
+        "expectedChunks": 95,
+        "completedChunks": 5,
+        "recordsRead": 263155,
+        "recordsPublished": 263155,
+        "recordsRejected": 0,
+        "recordsIgnored": 0,
+        "outputMessages": 16155,
+        "intakeDlq": 2,
+        "chunkDlq": 0,
+        "recordsPerSecond": 1351.13,
+        "inputMiBPerSecond": 2.45
+      },
+      "resources": {
+        "peakSingleContainerCpuPercent": 177.92,
+        "peakSingleContainerMemoryPercent": 31.78,
+        "rawSamples": "docker-resources.csv",
+        "workerContainerLimits": "worker-container-limits.csv"
+      }
+    }
+  ]
+}
