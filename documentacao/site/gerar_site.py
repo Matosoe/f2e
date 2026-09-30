@@ -1,12 +1,27 @@
 #!/usr/bin/env python3
 """Gera o portal estático a partir dos documentos do repositório (sem dependências)."""
 from pathlib import Path
+import argparse
 import html
 import json
 import re
+import shutil
+from urllib.parse import quote
 
 DOCS = Path(__file__).resolve().parent.parent
 SITE = DOCS / "site"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--pages-dir", type=Path, help="Pasta de saída para GitHub Pages; omita para gerar o portal offline.")
+parser.add_argument("--repository-url", default="https://github.com/Matosoe/f2e", help="URL do repositório para os links da versão publicada.")
+parser.add_argument("--ref", default="master", help="Branch ou commit dos documentos no GitHub.")
+args = parser.parse_args()
+
+def source_url(path):
+    if args.pages_dir is None:
+        return path
+    relative = (DOCS / path).resolve().relative_to(DOCS.parent).as_posix()
+    return args.repository_url.rstrip("/") + "/blob/" + quote(args.ref, safe="") + "/" + quote(relative, safe="/")
+
 FILES = [
     ("requisitos", "Requisitos e restrições", "requisitos_e_restricoes.md"),
     ("arquitetura", "Arquitetura", "arquitetura.md"),
@@ -34,9 +49,9 @@ def inline(text, source):
             resolved = (DOCS / source).parent.joinpath(path).resolve()
             try:
                 relative = resolved.relative_to(DOCS).as_posix()
-                url = "#"+ROUTES[relative] if relative in ROUTES else relative+("#"+fragment if fragment else "")
+                url = "#"+ROUTES[relative] if relative in ROUTES else source_url(relative)+("#"+fragment if fragment else "")
             except ValueError:
-                url = "../"+resolved.relative_to(DOCS.parent).as_posix()
+                url = source_url("../"+resolved.relative_to(DOCS.parent).as_posix())+("#"+fragment if fragment else "")
         if re.match(r"^[a-zA-Z]+:", url) and not url.startswith(("https://", "http://")):
             return hold(esc(m[1]))
         return hold('<a href="'+esc(url)+'">'+esc(m[1])+'</a>')
@@ -116,7 +131,7 @@ for ident,title,path in FILES:
     kind="benchmark-report" if path.startswith("benchmark/") else "page document-page"
     hidden="" if kind=="benchmark-report" else " hidden"
     title_tag="h3" if kind=="benchmark-report" else "h1"
-    article=f'<article id="{ident}" class="{kind}"{hidden}><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><{title_tag}>{esc(title)}</{title_tag}><a class="source-link" href="{path}">Abrir Markdown original ↗</a></div>'
+    article=f'<article id="{ident}" class="{kind}"{hidden}><div class="document-heading"><p class="eyebrow">DOCUMENTO DE REFERÊNCIA</p><{title_tag}>{esc(title)}</{title_tag}><a class="source-link" href="{esc(source_url(path))}">Abrir Markdown original ↗</a></div>'
     if ident=="arquitetura":
         article+='{{DIAGRAM}}'
     articles.append((ident,article+'<div class="document-content">'+body+'</div></article>'))
@@ -150,5 +165,18 @@ template=template.replace("{{DOCUMENTS}}","\n".join(a for ident,a in articles if
 template=template.replace("{{REPORTS}}","\n".join('<details class="report"><summary>'+esc(title)+'</summary>'+dict(articles)[ident]+'</details>' for ident,title,path in FILES if path.startswith("benchmark/")))
 template=template.replace("{{DIAGRAM}}",diagram)
 template=template.replace("{{DATA}}",json.dumps(data,ensure_ascii=False).replace("<","\\u003c"))
-(DOCS/"index.html").write_text(template,encoding="utf-8")
-print("Site gerado: documentacao/index.html · 8 documentos · 4 perfis AWS")
+output = DOCS
+if args.pages_dir is not None:
+    output = args.pages_dir.resolve()
+    if output == DOCS or DOCS in output.parents or output in DOCS.parents:
+        parser.error("Use uma pasta de saída separada das fontes, por exemplo .build/pages.")
+    # Links editoriais do template também precisam apontar para o repositório.
+    template = re.sub(r'href="([^"#]+\.md)"', lambda m: 'href="'+esc(source_url(html.unescape(m[1])))+'"' if not m[1].startswith(("https://", "http://")) else m[0], template)
+    template = template.replace("Documentação do repositório · leitura offline", "Documentação do repositório · GitHub Pages")
+    (output / "site").mkdir(parents=True, exist_ok=True)
+    for asset in ("site.css", "site.js"):
+        shutil.copy2(SITE / asset, output / "site" / asset)
+    shutil.copytree(SITE / "dados", output / "site" / "dados", dirs_exist_ok=True)
+    (output / ".nojekyll").write_text("", encoding="utf-8")
+(output/"index.html").write_text(template,encoding="utf-8")
+print(f"Site gerado: {output / 'index.html'} · 8 documentos · 4 perfis AWS")

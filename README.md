@@ -254,6 +254,7 @@ Todos os limites e opções por arquivo estão documentados em [Contratos versio
 ## Documentação
 
 - [Portal interativo — requisitos, arquitetura, blueprint e benchmarks](documentacao/index.html) (abra no navegador; funciona offline)
+- [Publicação do portal no GitHub Pages](documentacao/site/README.md#publicar-no-github-pages)
 
 - [Arquitetura da solução](documentacao/arquitetura.md)
 - [Contratos versionados](documentacao/contratos.md)

@@ -35,6 +35,36 @@ as sínteses do template e os detalhes dos componentes em `site.js`. O gerador
 preserva o código Mermaid do documento original em uma seção recolhível; a
 topologia interativa é implementada localmente, sem dependência de CDN.
 
+## Publicar no GitHub Pages
+
+O workflow [pages.yml](../../.github/workflows/pages.yml) gera e publica o
+portal quando há alterações em `documentacao/` na branch `master`. Pull
+requests apenas geram o artefato, sem publicar. Também é possível executar
+o workflow manualmente em **Actions → GitHub Pages → Run workflow**.
+
+No repositório, selecione **Settings → Pages → Build and deployment →
+Source → GitHub Actions**. Depois de enviar as alterações para `master` e
+concluir o workflow, o endereço esperado é <https://matosoe.github.io/f2e/>.
+
+Para gerar e visualizar a versão de publicação localmente, na raiz:
+
+```bash
+python documentacao/site/gerar_site.py --pages-dir .build/pages
+python -m http.server 8000 --directory .build
+```
+
+Abra <http://localhost:8000/pages/>. Esse prefixo também permite conferir
+os caminhos relativos usados em um site de projeto como `/f2e/`.
+A pasta `.build/pages/` contém o HTML, CSS, JavaScript, os dois JSONs de
+evidências e `.nojekyll`. Links para Markdown e scripts apontam para o
+GitHub; o workflow usa o commit publicado para manter as referências estáveis.
+Em forks, a URL do repositório é obtida automaticamente pelo workflow.
+Se mudar a branch de publicação, ajuste os filtros `master` no workflow.
+
+A geração sem `--pages-dir` continua atualizando `documentacao/index.html`
+para uso offline. A geração para Pages não altera esse arquivo versionado.
+Não é necessário configurar domínio próprio, Node.js ou dependências Python.
+
 ## Proveniência dos resultados
 
 | Painel | Fonte |
