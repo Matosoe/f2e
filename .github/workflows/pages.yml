@@ -31,7 +31,7 @@ jobs:
           --repository-url "${{ github.server_url }}/${{ github.repository }}"
           --ref "${{ github.sha }}"
       - name: Enviar artefato do Pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .build/pages
 
